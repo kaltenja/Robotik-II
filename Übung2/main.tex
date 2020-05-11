@@ -233,11 +233,23 @@ Die Polstellen für $G_w(s)$ sind
 0&=s^2+2s-15+k_p\\
 s_{1/2}&=-1\pm\sqrt{16-k_p}.
 \end{align*}
-Ein Regelkreis ist stabil wenn seine Polstellen nur aus negativen Realteilen bestehen. Dafür muss offensichtlich
+Ein Regelkreis ist stabil wenn seine Polstellen nur aus negativen Realteilen bestehen. Dafür muss schon mal offensichtlich
 \begin{equation*}
 k_p \leq 16
 \end{equation*}
-sein.
+sein, um komplexe Polstellen zu vermeiden. Zusätzlich müssen die Polstellen jetzt noch negativ sein. Für 
+\begin{align*}
+s_1 = -1 + \sqrt{16-k_p}
+\end{align*}
+muss $k_p > 15$ sein, damit $s_1$ auch negativ ist. Für
+\begin{align*}
+s_2 = -1 - \sqrt{16-k_p}
+\end{align*}
+muss die Wurzel größer als $-1$ sein, damit $s_2<0$ gilt. Dies ist bereits durch die Bedingung $k_p \leq 16$ garantiert.\\
+Dadurch ergeben sich die Stabilitätsbedingungen an $k_p$ zu:
+\begin{align*}
+15 < k_p \leq 16.
+\end{align*}
 \subsection*{g)}
 Die statische Verstärkung ist
 \begin{equation*}
@@ -245,9 +257,9 @@ G_w(0)=\dfrac{b_0}{a_0} = \dfrac{5k_p}{-15+k_p} = 80.
 \end{equation*}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{plot.png}
+	\includegraphics[width=\textwidth,trim=4.5cm 1.5cm 4.5cm 1.5cm,clip]{plot.png}
 	\captionsetup{labelformat=empty}
-	\caption{Abb. 2.2.1: Führungsübertragungsfuntion im Frequenzbereich}
+	\caption{Abb. 2.2.1: Führungsübertragungsfuntion im Zeitbereich}
 \end{figure}
 
 \end{document}
