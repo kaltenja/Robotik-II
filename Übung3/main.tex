@@ -54,9 +54,73 @@
 
 \section*{Aufgabe 3-1. Steuerbarkeit und Stabilität (5 Punkte)}
 \subsection*{a)}
+Um das System auf Steuerbarkeit zu untersuchen wird nach dem Steuerbarkeitskriterium von Kalman geprüft. Dies besagt, dass ein System steuerbar ist, wenn die Steuerbarkeitsmatrix $S_S$ den Rang $n$ hat.
+\begin{align*}
+\text{Rang} \hspace{3pt} S_S = n
+\end{align*}
+Bei Eingrößensystem genügt eine Prüfung von
+\begin{align*}
+\text{det} \hspace{3pt} S_S \neq 0.
+\end{align*}
+Die Steuerbarkeitsmatrix ist hier:
+\begin{align*}
+S_S=\begin{bmatrix}
+b & Ab
+\end{bmatrix} =
+\begin{bmatrix}
+8 & -64 \\
+24 & -192
+\end{bmatrix}
+\end{align*}
+Die Determinante ist
+\begin{align*}
+\text{det} \hspace{3pt} S_S=8\cdot (-192) - (-64) \cdot 24 = 0.
+\end{align*}
+Das System ist somit nicht vollständig steuerbar.
+
 \subsection*{b)}
+Für die einfache Berechnung der Übertragungsfunktion in Pol-Nullstellenform, kann man zuvor die Pol- und Nullstellen aus der Polynomform der Übertragungsfunktion berechnen.\\
+Die Übertragungsfunktion ist (für die Berechnung aus dem Zustandsraummodell) definiert als
+\begin{align*}
+G(s) = c^T(sI-A)^{-1}b+d.
+\end{align*}
+Daraus ergibt sich für unseren Fall:
+\begin{align*}
+G(s)=
+\begin{bmatrix}
+1 & 0
+\end{bmatrix}
+\left(
+\begin{bmatrix}
+s-4 & 4\\
+0 & s+8
+\end{bmatrix}
+\right)^{-1}
+\begin{bmatrix}
+8\\
+24
+\end{bmatrix}
+=
+\dfrac{8s-32}{s^2+4s-32}
+\end{align*}
+Dies lässt sich zu
+\begin{align} \tag{1}
+\label{eqn:Gl1}
+G(s)=8\dfrac{s-4}{(s-4)(s+8)}
+\end{align}
+umformen. Setzt man voraus, dass $s \neq 4$ gilt, lässt sich dies sogar noch weiter kürzen zu
+\begin{align} \tag{2}
+\label{eqn:Gl2}
+G(s) = 8 \dfrac{1}{s+8}.
+\end{align}
 \subsection*{c)}
+\label{sec:1c}
+Berechnet man nun die Pol- und Nullstellen nach Gl. \ref{eqn:Gl2}, erkennt man, dass das System nach dieser Übertragungsfunktion keine Nullstellen und nur eine Polstelle bei $s_p=-8$ hat. Die Ordnung ist somit 1.
+
 \subsection*{d)}
+Die Berechnung der Pol- und Nullstellen mit Hilfe von z.B. MATLAB zeigt, dass das System anders als in Gl. \ref{eqn:Gl2} gezeigt, eine höhere Ordnung besitzt. Es gibt sehr wohl eine Pol- als auch eine Nullstelle bei $s=4$.\\
+Das Problem ist hier das zu weite Kürzen von Gl. \ref{eqn:Gl1} zu Gl. \ref{eqn:Gl2}. Bei diesem Vorgang verliert man die Pol- und Nullstelle bei $s=4$, sowie eine Ordnung.
+
 \subsection*{e)}
 
 
