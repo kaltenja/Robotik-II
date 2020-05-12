@@ -126,9 +126,102 @@ Das Problem ist hier das zu weite Kürzen von Gl. \ref{eqn:Gl1} zu Gl. \ref{eqn:
 
 \section*{Aufgabe 3-2. Steuerbarkeit und Beobachtbarkeit eines elektrischen Systems (5 Punkte)}
 \subsection*{a)}
+Um das System auf Steuerbarkeit zu untersuchen wird nach dem Steuerbarkeitskriterium von Kalman geprüft. Dies besagt, dass ein System steuerbar ist, wenn die Steuerbarkeitsmatrix $S_S$ den Rang $n$ hat.
+\begin{align*}
+\text{Rang} \hspace{3pt} S_S = n
+\end{align*}
+Bei Eingrößensystem genügt eine Prüfung von
+\begin{align*}
+\text{det} \hspace{3pt} S_S \neq 0.
+\end{align*}
+Die Steuerbarkeitsmatrix ist hier:
+\begin{align*}
+S_S=\begin{bmatrix}
+b & Ab
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{1}{R_1C} & -\frac{1}{C^2{R_1}^2} \\\\
+\frac{1}{L} & -\frac{R_2}{L^2}
+\end{bmatrix}
+\end{align*}
+Die Determinante ist
+\begin{align*}
+\text{det} \hspace{3pt} S_S=-\frac{CR_1R_2-L}{C^2L^2{R_1}^2}
+\end{align*}
+Um nun ein nicht vollständig steuerbares System zu erhalten muss gelten:
+\begin{align*}
+\text{det} \hspace{3pt} S_S=0
+\end{align*}
+Das wird erreicht durch:
+\begin{align*}
+0=CR_1R_2-L\Leftrightarrow L=CR_1R_2
+\end{align*}
+Wobei zusätzlich gelten muss:
+\begin{align*}
+C^2L^2{R_1}^2 \neq 0
+\end{align*}
 \subsection*{b)}
+Um das System auf Beobachtbarkeit zu untersuchen wird nach dem Beobachtbarkeitskriterium von Kalman geprüft. Dies besagt, dass ein System beobachtbar ist, wenn die Beobachtbarkeitsmatrix $S_B$ den Rang $n$ hat.
+\begin{align*}
+\text{Rang} \hspace{3pt} S_B = n
+\end{align*}
+Bei Eingrößensystem genügt eine Prüfung von
+\begin{align*}
+\text{det} \hspace{3pt} S_B \neq 0.
+\end{align*}
+Die Beobachtbarkeitsmatrix ist hier:
+\begin{align*}
+S_B=\begin{bmatrix}
+C\\
+CA
+\end{bmatrix} =
+\begin{bmatrix}
+-\frac{1}{R_1} & 1 \\\\
+\frac{1}{C{R_1}^2} & -\frac{R_2}{L}
+\end{bmatrix}
+\end{align*}
+Die Determinante ist
+\begin{align*}
+\text{det} \hspace{3pt} S_B=\frac{CR_1R_2-L}{CL{R_1}^2}
+\end{align*}
+Um nun ein nicht vollständig beobachtbares System zu erhalten muss gelten:
+\begin{align*}
+\text{det} \hspace{3pt} S_B=0
+\end{align*}
+Das wird erreicht durch:
+\begin{align*}
+0=CR_1R_2-L\Leftrightarrow L=CR_1R_2
+\end{align*}
+Wobei zusätzlich gelten muss:
+\begin{align*}
+CL{R_1}^2 \neq 0
+\end{align*}
 \subsection*{c)}
+Beispielhaft wurden folgende Werte gewählt:
+\begin{align*}
+	R_1=1\Omega,\hspace{3pt}R_2=2\Omega,\hspace{3pt}C=0.5F,\hspace{3pt}L=1H
+\end{align*}
 \subsection*{d)}
+Nullstellen:
+\begin{align*}
+	s_{n,1}=-2.82288,\hspace{3pt}s_{n,2}=-0.17712
+\end{align*}
+Pole:
+\begin{align*}
+	s_{p,1}=-2.0,\hspace{3pt}s_{p,2}=-0.5
+\end{align*}
 \subsection*{e)}
+Beispielhaft wurden folgende Werte gewählt:
+\begin{align*}
+	R_1=1\Omega,\hspace{3pt}R_2=2\Omega,\hspace{3pt}C=0.5F,\hspace{3pt}L=1H
+\end{align*}
+Nullstellen:
+\begin{align*}
+	s_{n,1}=-2.82288,\hspace{3pt}s_{n,2}=-0.17712
+\end{align*}
+Pole:
+\begin{align*}
+	s_{p,1}=-2.0,\hspace{3pt}s_{p,2}=-0.5
+\end{align*}
 
 \end{document}
