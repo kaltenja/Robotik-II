@@ -122,8 +122,36 @@ Die Berechnung der Pol- und Nullstellen mit Hilfe von z.B. MATLAB zeigt, dass da
 Das Problem ist hier das zu weite Kürzen von Gl. \ref{eqn:Gl1} zu Gl. \ref{eqn:Gl2}. Bei diesem Vorgang verliert man die Pol- und Nullstelle bei $s=4$, sowie eine Ordnung.
 
 \subsection*{e)}
-
-
+\subsubsection*{Zustandsstabilität}
+Ein System ist stabil wenn die für die Eigenwerte $\lambda$ der Systemmatrix $A$ gilt:
+\begin{align*}
+	\text{Re}\{\lambda_i\}\leq0\hspace{20pt}(i=1,2,...,n)
+\end{align*}
+Gilt zusätzlich:
+\begin{align*}
+	\text{Re}\{\lambda_i\}<0\hspace{20pt}(i=1,2,...,n)
+\end{align*}
+ist das System asymptotisch stabil.
+Die Eigenwerte von $A$ sind die Lösungen der charakteristischen Gleichung:
+\begin{align*}
+	\text{det}(A-\lambda I)&=0\\
+	(\lambda-4)\cdot(\lambda+8)&=0
+\end{align*}
+Damit erhält man die Eigenwerte $\lambda_1=4$ und $\lambda_2=-8$. Aus $\text{Re}\{\lambda_{1}\}=4$ folgt, dass das System nicht stabil ist.
+\subsubsection*{Eingangs-Ausgangs-Stabilität}
+Ein System ist genau dann E/A-stabil, wenn sämtliche Pole seiner Übertragungsfunktion die Bedingung 
+\begin{align*}
+	\text{Re}\{s_i\}<0\hspace{20pt}(i=1,2,...,n)
+\end{align*}
+erfüllen.
+Die Pole der Übertragungsfunktion $G(s)$ erhält man durch das Nullsetzen des Nenners und Lösen nach $s$.
+\begin{align*}
+	0=s+8
+\end{align*}
+Damit erhält man den Pol $s_1=-8$. Aus $\text{Re}\{s_{1}\}=-8$
+folgt, dass das System E/A-stabil ist.\\\\
+Das System ist nicht zustandsstabil, d.h. wird das System um $x_0$ aus seiner Gleichgewichtslage ausgelenkt, kehrt es nicht mehr zu seiner Gleichgewichtslage zurück.\\
+Da das System jedoch E/A-stabil ist, besitzt es eine betragsbeschränkte Ausgangsgröße wenn es von außen durch eine Eingangsgröße erregt wird.
 \section*{Aufgabe 3-2. Steuerbarkeit und Beobachtbarkeit eines elektrischen Systems (5 Punkte)}
 \subsection*{a)}
 Um das System auf Steuerbarkeit zu untersuchen wird nach dem Steuerbarkeitskriterium von Kalman geprüft. Dies besagt, dass ein System steuerbar ist, wenn die Steuerbarkeitsmatrix $S_S$ den Rang $n$ hat.
@@ -229,6 +257,11 @@ Pole:
 \begin{align*}
 	s_{p,1/2}=-1.0
 \end{align*}
+Da nun  $R_1=R_2=R$ gilt, folgt für die Ausgangsgröße:
+\begin{align*}
+	y=\frac{u}{R}
+\end{align*}
+Das System hängt somit linear von der Eingangsgröße (Sprungantwort) ab und beginnt nicht zu schwingen. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{plot2.png}
