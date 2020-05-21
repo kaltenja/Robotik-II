@@ -33,8 +33,8 @@
 	\vspace{25pt} % Whitespace
 	\rule{\linewidth}{0.5pt}\\ % Thin top horizontal rule
 	\vspace{20pt} % Whitespace
-	{\huge Übung 3}\\ % The assignment title
-	{\Large Steuerbarkeit, Beobachtbarkeit \& Stabilität}\\
+	{\huge Übung 4}\\ % The assignment title
+	{\Large Steuerbarkeitund Beobachtbarkeit}\\
 	\vspace{12pt} % Whitespace
 	\rule{\linewidth}{2pt}\\ % Thick bottom horizontal rule
 	\vspace{12pt} % Whitespace
@@ -48,191 +48,191 @@
 
 \maketitle % Print the title
 
-%----------------------------------------------------------------------------------------
-%	FIGURE EXAMPLE
-%----------------------------------------------------------------------------------------
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\newcommand{\inte}{$\displaystyle \int$}
 
-\section*{Aufgabe 3-1. Steuerbarkeit und Stabilität (5 Punkte)}
-\subsection*{a)}
-Um das System auf Steuerbarkeit zu untersuchen wird nach dem Steuerbarkeitskriterium von Kalman geprüft. Dies besagt, dass ein System steuerbar ist, wenn die Steuerbarkeitsmatrix $S_S$ den Rang $n$ hat.
-\begin{align*}
-\text{Rang} \hspace{3pt} S_S = n
-\end{align*}
-Bei Eingrößensystem genügt eine Prüfung von
-\begin{align*}
-\text{det} \hspace{3pt} S_S \neq 0.
-\end{align*}
-Die Steuerbarkeitsmatrix ist hier:
-\begin{align*}
-S_S=\begin{bmatrix}
-b & Ab
-\end{bmatrix} =
-\begin{bmatrix}
-8 & -64 \\
-24 & -192
-\end{bmatrix}
-\end{align*}
-Die Determinante ist
-\begin{align*}
-\text{det} \hspace{3pt} S_S=8\cdot (-192) - (-64) \cdot 24 = 0.
-\end{align*}
-Das System ist somit nicht vollständig steuerbar.
+\section*{Aufgabe4-1. Steuerbarkeit und Beobachtbarkeit von Reihen-und Parallelschaltung (6Punkte)}
+Zuerst betrachten wir die \textbf{Reihenschaltung} zweier Integretoren.
 
-\subsection*{b)}
-Für die einfache Berechnung der Übertragungsfunktion in Pol-Nullstellenform, kann man zuvor die Pol- und Nullstellen aus der Polynomform der Übertragungsfunktion berechnen.\\
-Die Übertragungsfunktion ist (für die Berechnung aus dem Zustandsraummodell) definiert als
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+   		% We start by placing the blocks
+    	\node [input, name=input] {};
+    	\node [block, right of=input] (integrator1) {\inte};
+    	\node [block, right = 1.5cm of integrator1] (integrator2) {\inte};
+    	\node [output, right of=integrator2] (output) {};
+
+    	% Once the nodes are placed, connecting them is easy. 
+    	\draw [draw,->] (input) -- node {$U$} (integrator1);
+    	\draw [->] (integrator1) -- node {} (integrator2);
+    	\draw [->] (integrator2) -- node [name=y] {$Y$}(output);
+	\end{tikzpicture}
+	\captionsetup{labelformat=empty}
+	\caption{Abb.4-1.1: Blockschaltbild der Reihenschaltung zweier Integratoren.}
+\end{figure}
+Nach
 \begin{align*}
-G(s) = c^T(sI-A)^{-1}b+d.
+G(s)=\left( c^T \left( sI-A \right)^{-1}b+d \right)
 \end{align*}
-Daraus ergibt sich für unseren Fall:
+ist die Übertragungsfunktion eines Integrators
 \begin{align*}
-G(s)=
-\begin{bmatrix}
+G_{\text{int}}(s)=\dfrac{1}{T_is}=\dfrac{K}{s} \quad\quad \text{mit} \quad\quad K=\dfrac{1}{T_i}.
+\end{align*}
+Demnach ist die Übertragungfunktion einer Reihenschaltung zweier Integratoren
+\begin{align*}
+G(s) = G_{\text{int}}(s) \cdot G_{\text{int}}(s) = \dfrac{K^2}{s^2}.
+\end{align*}
+Daraus kann nun das Zustandsraummodell abgelesen werden\footnote{\url{https://lpsa.swarthmore.edu/Representations/SysRepTransformations/TF2SS.html}}, um dann auf Steuerbarkeit und Beobachtbarkeit zu prüfen.\\
+Das Zustandsraummodell ist
+\begin{align*}
+\dot{x} &= \begin{bmatrix}
+0 & 1\\
+0 & 0
+\end{bmatrix} x(t) + \begin{bmatrix}
+0 \\
+1
+\end{bmatrix} u(t) \\
+y(t) &= \begin{bmatrix}
+K^2 & 0
+\end{bmatrix} x(t)
+\end{align*}
+Um jetzt auf Steuerbarkeit und Beobachtbarkeit zu prüfen, müssen nun die Steuerbarkeits- und Beobachtbarkeitsmatrizen gebildet werden:
+\begin{align*}
+S_S &= \begin{bmatrix}
+B & AB & A^2B & ... & A^{n-1}B
+\end{bmatrix} = \begin{bmatrix}
+B & AB
+\end{bmatrix} = \begin{bmatrix}
+0 & 1\\
 1 & 0
-\end{bmatrix}
-\left(
-\begin{bmatrix}
-s-4 & 4\\
-0 & s+8
-\end{bmatrix}
-\right)^{-1}
-\begin{bmatrix}
-8\\
-24
-\end{bmatrix}
-=
-\dfrac{8s-32}{s^2+4s-32}
-\end{align*}
-Dies lässt sich zu
-\begin{align} \tag{1}
-\label{eqn:Gl1}
-G(s)=8\dfrac{s-4}{(s-4)(s+8)}
-\end{align}
-umformen. Setzt man voraus, dass $s \neq 4$ gilt, lässt sich dies sogar noch weiter kürzen zu
-\begin{align} \tag{2}
-\label{eqn:Gl2}
-G(s) = 8 \dfrac{1}{s+8}.
-\end{align}
-\subsection*{c)}
-\label{sec:1c}
-Berechnet man nun die Pol- und Nullstellen nach Gl. \ref{eqn:Gl2}, erkennt man, dass das System nach dieser Übertragungsfunktion keine Nullstellen und nur eine Polstelle bei $s_p=-8$ hat. Die Ordnung ist somit 1.
-
-\subsection*{d)}
-Die Berechnung der Pol- und Nullstellen mit Hilfe von z.B. MATLAB zeigt, dass das System anders als in Gl. \ref{eqn:Gl2} gezeigt, eine höhere Ordnung besitzt. Es gibt sehr wohl eine Pol- als auch eine Nullstelle bei $s=4$.\\
-Das Problem ist hier das zu weite Kürzen von Gl. \ref{eqn:Gl1} zu Gl. \ref{eqn:Gl2}. Bei diesem Vorgang verliert man die Pol- und Nullstelle bei $s=4$, sowie eine Ordnung.
-
-\subsection*{e)}
-
-
-\section*{Aufgabe 3-2. Steuerbarkeit und Beobachtbarkeit eines elektrischen Systems (5 Punkte)}
-\subsection*{a)}
-Um das System auf Steuerbarkeit zu untersuchen wird nach dem Steuerbarkeitskriterium von Kalman geprüft. Dies besagt, dass ein System steuerbar ist, wenn die Steuerbarkeitsmatrix $S_S$ den Rang $n$ hat.
-\begin{align*}
-\text{Rang} \hspace{3pt} S_S = n
-\end{align*}
-Bei Eingrößensystem genügt eine Prüfung von
-\begin{align*}
-\text{det} \hspace{3pt} S_S \neq 0.
-\end{align*}
-Die Steuerbarkeitsmatrix ist hier:
-\begin{align*}
-S_S=\begin{bmatrix}
-b & Ab
-\end{bmatrix} =
-\begin{bmatrix}
-\frac{1}{R_1C} & -\frac{1}{C^2{R_1}^2} \\\\
-\frac{1}{L} & -\frac{R_2}{L^2}
-\end{bmatrix}
-\end{align*}
-Die Determinante ist
-\begin{align*}
-\text{det} \hspace{3pt} S_S=-\frac{CR_1R_2-L}{C^2L^2{R_1}^2}
-\end{align*}
-Um nun ein nicht vollständig steuerbares System zu erhalten muss gelten:
-\begin{align*}
-\text{det} \hspace{3pt} S_S=0
-\end{align*}
-Das wird erreicht durch:
-\begin{align*}
-0=CR_1R_2-L\Leftrightarrow L=CR_1R_2
-\end{align*}
-Wobei zusätzlich gelten muss:
-\begin{align*}
-C^2L^2{R_1}^2 \neq 0
-\end{align*}
-\subsection*{b)}
-Um das System auf Beobachtbarkeit zu untersuchen wird nach dem Beobachtbarkeitskriterium von Kalman geprüft. Dies besagt, dass ein System beobachtbar ist, wenn die Beobachtbarkeitsmatrix $S_B$ den Rang $n$ hat.
-\begin{align*}
-\text{Rang} \hspace{3pt} S_B = n
-\end{align*}
-Bei Eingrößensystem genügt eine Prüfung von
-\begin{align*}
-\text{det} \hspace{3pt} S_B \neq 0.
-\end{align*}
-Die Beobachtbarkeitsmatrix ist hier:
-\begin{align*}
-S_B=\begin{bmatrix}
-C\\
+\end{bmatrix} \\
+S_B &= \begin{bmatrix}
+C & CA & CA^2 & ... & CA^{n-1}
+\end{bmatrix}^T = \begin{bmatrix}
+C \\
 CA
-\end{bmatrix} =
-\begin{bmatrix}
--\frac{1}{R_1} & 1 \\\\
-\frac{1}{C{R_1}^2} & -\frac{R_2}{L}
+\end{bmatrix} = \begin{bmatrix}
+K^2 & 0\\
+0 & K^2
 \end{bmatrix}
 \end{align*}
-Die Determinante ist
+
+Untersucht man nun deren Determinanten, können Rückschlüsse auf die Steuerbarkeit und Beobachtbarkeit gezogen werden. Die Determinante der Steuerbarkeitsmatrix ist
 \begin{align*}
-\text{det} \hspace{3pt} S_B=\frac{CR_1R_2-L}{CL{R_1}^2}
+\text{det}\left( S_S \right) &= 0 - 1 = -1 \neq 0.
 \end{align*}
-Um nun ein nicht vollständig beobachtbares System zu erhalten muss gelten:
+Die Determinante der Beobachtbarkeitsmatrix ist
 \begin{align*}
-\text{det} \hspace{3pt} S_B=0
+\text{det}\left( S_B \right) &= K^2 \cdot K^2 - 0 = K^4 \neq 0.
 \end{align*}
-Das wird erreicht durch:
+Beide sind ungleich 0. Das System ist damit vollständig steuerbar und beobachtbar. \\
+
+Nun betrachten wir die \textbf{Parallelschaltung} zweier Integratoren.
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+   		% We start by placing the blocks
+    	\node [input, name=input] {};
+    	\node [input, name=input2, right of = input] {};
+    	\node [block, above right = of input2] (integrator1) {\inte};
+    	\node [block, below right = of input2] (integrator2) {\inte};
+    	\node [sum, right = 5cm of input2] (sum) {};
+    	\node [output, right of=sum] (output) {};
+
+    	% Once the nodes are placed, connecting them is easy. 
+    	\draw [draw, pos = 0.75] (input) |- node {$U$} (input2);
+    	\draw [draw,->] (input2) |- node {} (integrator1);
+    	\draw [draw,->] (input2) |- node {} (integrator2);
+    	\draw [draw,->] (integrator1) -| node {} (sum);
+    	\draw [draw,->] (integrator2) -| node {} (sum);
+    	\draw [->] (sum) -- node [name=y] {$Y$}(output);
+	\end{tikzpicture}
+	\captionsetup{labelformat=empty}
+	\caption{Abb.4-1.2: Blockschaltbild der Parallelschaltung zweier Integratoren.}
+\end{figure}
+
+Die Übertragungsfunktion ist
 \begin{align*}
-0=CR_1R_2-L\Leftrightarrow L=CR_1R_2
+G(s) = G_{\text{int}}(s) + G_{\text{int}}(s) = 2\dfrac{K}{s}.
 \end{align*}
-Wobei zusätzlich gelten muss:
+Daraus kann erneut das Zustandsraummodell abgelesen werden.
 \begin{align*}
-CL{R_1}^2 \neq 0
+\dot{x} &= u(t) \\
+y(t) &= 2K x(t)
 \end{align*}
+
+Nun ist es wieder möglich, die Steuerbarkeits- und die Beobachtbarkeitsmatrix zu bilden.
+\begin{align*}
+S_S &= \left[B\right]=1 \neq 0 \\
+S_B &= \left[C\right] = 2K \neq 0
+\end{align*}
+Damit ist auch die Parallelschaltung zweier Integratoren vollständig steuerbar und beobachtbar.
+
+\section*{Aufgabe4-2. Steuerbarkeit und Beobachtbarkeit eines Mehrgrößensystems (3Punkte)}
+Die Prüfung auf Steuerbarkeit und Beobachtbarkeit bei Mehrgrößensystemen ist sehr ähnlich zu der von Eingrößensystemen. Man bildet zuerst die benötigten Matrizen:
+\begin{align*}
+S_S &= \begin{bmatrix}
+B & AB
+\end{bmatrix} = \begin{bmatrix}
+2 & 1 & -6 & -3\\
+1 & 0 & -2 & 0
+\end{bmatrix} \\
+S_B &= \begin{bmatrix}
+C & CA
+\end{bmatrix}^T = \begin{bmatrix}
+2 & 0\\
+1 & 0\\
+-6 & 0\\
+-3 & 0
+\end{bmatrix}
+\end{align*}
+
+Und dann die zugehörigen Transponierten:
+
+\begin{align*}
+{S_S}^T &= \begin{bmatrix}
+2 & 1\\
+1 & 0\\
+-6 & -2\\
+-3 & 0
+\end{bmatrix} \\
+{S_B}^T &= \begin{bmatrix}
+2 & 1 & -6 & -3\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{align*}
+
+Multipliziert man diese und bildet dann die Determinante, kann man Rückschlüsse auf die Steuerbarkeit und Beobachtbarkeit des Systems ziehen.
+
+\begin{align*}
+S_S{S_S}^T&=\begin{bmatrix}
+50 & 14\\
+14 & 5
+\end{bmatrix}\\
+\text{det}\left( S_S{S_S}^T \right) &= 54 \neq 0\\
+{S_B}^TS_B&=\begin{bmatrix}
+50 & 0\\
+0 & 0
+\end{bmatrix}\\
+\text{det}\left( {S_B}^TS_B \right) &= 0
+\end{align*}
+
+Das System ist somit vollständig steuerbar, jedoch nicht vollständig beobachtbar.
+
+
+\section*{Aufgabe4-3. Steuerbarkeitund Beobachtbarkeitdes Pendels am Wagen (4Punkte)}
+\subsection*{a)}
+
+\subsection*{b)}
+
 \subsection*{c)}
-Beispielhaft wurden folgende Werte gewählt:
-\begin{align*}
-	R_1=1\Omega,\hspace{3pt}R_2=2\Omega,\hspace{3pt}C=0.5F,\hspace{3pt}L=1H
-\end{align*}
+
 \subsection*{d)}
-Nullstellen:
-\begin{align*}
-	s_{n,1}=-2.0,\hspace{3pt}s_{n,2}=-1.0
-\end{align*}
-Pole:
-\begin{align*}
-	s_{p,1/2}=-2.0
-\end{align*}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{plot1.png}
-	\captionsetup{labelformat=empty}
-	\caption{Abb. 3-2.1: Sprungantwort für $R_1\neq R_2$}
-\end{figure}
-\subsection*{e)}
-Beispielhaft wurden folgende Werte gewählt:
-\begin{align*}
-	R_1=2\Omega,\hspace{3pt}R_2=2\Omega,\hspace{3pt}C=0.5F,\hspace{3pt}L=2H
-\end{align*}
-Nullstellen:
-\begin{align*}
-	s_{n,1/2}=-1.0
-\end{align*}
-Pole:
-\begin{align*}
-	s_{p,1/2}=-1.0
-\end{align*}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{plot2.png}
-	\captionsetup{labelformat=empty}
-	\caption{Abb. 3-2.2: Sprungantwort für $R_1=R_2$}
-\end{figure}
+
 \end{document}
