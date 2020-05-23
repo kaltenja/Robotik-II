@@ -226,13 +226,94 @@ S_S{S_S}^T&=\begin{bmatrix}
 Das System ist somit vollständig steuerbar, jedoch nicht vollständig beobachtbar.
 
 
-\section*{Aufgabe4-3. Steuerbarkeitund Beobachtbarkeitdes Pendels am Wagen (4Punkte)}
+\section*{Aufgabe4-3. Steuerbarkeitund Beobachtbarkeit des Pendels am Wagen (4Punkte)}
 \subsection*{a)}
+Das System ist vollständig steuer- und beobachtbar (für die Berechnung siehe \verb+uebung4.m+).
 
 \subsection*{b)}
+Die Eigenwerte der Systemmatrix sind:
+\begin{align*}
+\lambda_1 &= 0\\
+\lambda_2 &= -5.5931\\
+\lambda_3 &= -0.5787\\
+\lambda_4 &= 5.5108
+\end{align*}
+
+Da nicht alle Eigenwerte aus ausschließich negativen Realteil bestehen ($\lambda_1 \text{und } \lambda_4 \geq 0$), ist das System nicht zustandsstabil.\\
+Es ist auch nicht stabilisierbar. Für eine Stabilisierung muss das System durch eine Zustands- oder Ausgangsrückführung geschlossen werden. Dafür wird entweder die Systemausgabe oder der Systemzustand auf die Stellgröße über eine Regler mit proportionalem Verhalten zurückgeführt. Zusätzlich muss ein Vorfilter mit
+\begin{align*}
+\text{Zustandsrückführung:} \quad & V=-\left( C \left( A-BK \right)^{-1}B \right)^{-1}\\
+\text{Ausgangsrückführung:} \quad & V=-\left( C \left( A-BK_yC \right)^{-1}B \right)^{-1}
+\end{align*}
+Diese Eigenschaft des Vorfilters beschränkt die Möglichkeit der Stabilisierung des System in diesem Fall.\\
+
+\textbf{Zustandsrückführung:} Durch $A-BK$ muss die Regelmatrix $K$ die Dimension $1 \times 4$ haben. Dadurch hat die Matrix $C \left( A-BK \right)^{-1}B$ die Dimension $2 \times 1$ und ist nicht invertierbar.\\
+
+\textbf{Ausgangsrückführung:} Durch $A-BK_yC$ muss die Regelmatrix $K_y$ die Dimension $1 \times 2$ haben. Dadurch hat die Matrix $C \left( A-BK_yC \right)^{-1}B$ die Dimension $2 \times 1$ und ist nicht invertierbar.
+
+Durch die Nichtbestimmbarkeit des Vorfilters, welcher für die Stabilisierung notwendig ist, ist das System nicht stabilisierbar.
 
 \subsection*{c)}
+Der Ausfall eines der beiden Sensoren wird über die Veränderung der C-Matrix realisiert. Fällt der Sensor für die Positionsmessung des Wagens aus bedeutet dies für
+\begin{align*}
+C = \begin{bmatrix}
+0 & 0 & 1 & 0
+\end{bmatrix}
+\end{align*}
+und damit für die Ausgabe
+\begin{align*}
+y(t) = \begin{bmatrix}
+0 & 0 & 1 & 0
+\end{bmatrix} \begin{bmatrix}
+x\\\dot{x}\\\theta\\\dot{\theta}
+\end{bmatrix} = \theta.
+\end{align*}
+In diesem Fall ist das System nicht mehr beobachtbar. Die Determinante der Beobachtbarkeitsmatrix ist Null.\\
+
+Fällt der Sensor für die Winkelmessung des Pendels aus bedeutet dies für 
+\begin{align*}
+C = \begin{bmatrix}
+1 & 0 & 0 & 0
+\end{bmatrix}
+\end{align*}
+und damit für die Ausgabe
+\begin{align*}
+y(t) = \begin{bmatrix}
+1 & 0 & 0 & 0
+\end{bmatrix} \begin{bmatrix}
+x\\\dot{x}\\\theta\\\dot{\theta}
+\end{bmatrix} = x.
+\end{align*}
+In diesem Fall ist das System immernoch beobachtbar. Die Determinante der Beobachtbarkeitsmatrix ist $0.3384$.
 
 \subsection*{d)}
+Durch den Ausfall des Wagensensors ist das System vollständig steuerbar aber nicht vollständig beobachtbar. Dadurch besitzt das System zwei der vier möglichen Teilsysteme einer Kalman-Zerlegung: Einen \textbf{steuerbaren und beobachtbaren} Teil und einen \textbf{steuerbaren, aber nicht beobachtbaren} Teil.\\
+
+\textbf{Das steuerbare, aber nicht beobachtbare Teilsystem:}
+\begin{align*}
+\left( \begin{bmatrix}
+\check{A}_{11} & \check{A}_{12}\\
+\check{A}_{21} & \check{A}_{22}
+\end{bmatrix}, \begin{bmatrix}
+\check{B}_1\\
+\check{B}_2
+\end{bmatrix}, \check{C}_2, \check{D} \right) 
+&=
+\left( \begin{bmatrix}
+0 & 1\\
+1 & - \dfrac{J}{d} f_c
+\end{bmatrix}, \begin{bmatrix}
+0\\
+\dfrac{J}{d}
+\end{bmatrix}, 0, 0 \right)
+\end{align*}\\
+
+\textbf{Das steuerbare und beobachtbare Teilsystem:}
+\begin{align*}
+\left( \check{A}_{22}, \check{B}_{2}, \check{C}_2, \check{D} \right)
+&=
+\left( - \dfrac{J}{d} f_c, \dfrac{J}{d}, 0, 0 \right)
+\end{align*}
+
 
 \end{document}
