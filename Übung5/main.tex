@@ -33,8 +33,8 @@
 	\vspace{25pt} % Whitespace
 	\rule{\linewidth}{0.5pt}\\ % Thin top horizontal rule
 	\vspace{20pt} % Whitespace
-	{\huge Übung 4}\\ % The assignment title
-	{\Large Steuerbarkeitund Beobachtbarkeit}\\
+	{\huge Übung 5}\\ % The assignment title
+	{\Large Regelabweichung, Vorfilter und Zustandsrückführung}\\
 	\vspace{12pt} % Whitespace
 	\rule{\linewidth}{2pt}\\ % Thick bottom horizontal rule
 	\vspace{12pt} % Whitespace
@@ -56,9 +56,80 @@
 \tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
 \newcommand{\inte}{$\displaystyle \int$}
 
-\section*{Aufgabe4-1. Steuerbarkeit und Beobachtbarkeit von Reihen-und Parallelschaltung (6Punkte)}
-Zuerst betrachten wir die \textbf{Reihenschaltung} zweier Integretoren.
+\section*{Aufgabe 5-1. Vorfilter für einen Regelkreis (3 Punkte)}
+\subsection*{a)}
+\subsubsection*{Steuerbarkeit}
+Um die Steuerbarkeit direkt mithilfe der Übertragungsfunktion $G(s)$ bestimmen zu können, bilden wir die \textbf{Regelungsnormalform}:
+\begin{align*}
+	\dot{x}_R(t)&=A_Rx_R(t)+b_Ru(t),\hspace{20pt}x_R(0)=x_{R_0}\\
+	y(t)&=c^T_Rx_R(t)+du(t)
+\end{align*}
+mit
+\begin{align*}
+	A_R&=-a_0=3,\hspace{10pt}&b_R=1\\
+	c^T_R&=b_0-b_na_0=1,&d=0
+	%\begin{bmatrix}
+	%	0 & 1\\
+	%	-a_0&-a_1
+	%\end{bmatrix}
+	%=
+	%\begin{bmatrix}
+	%	0 & 1\\
+	%	3&-1
+	%\end{bmatrix}
+	%,\hspace{20pt}b_R=
+	%\begin{bmatrix}
+	%	 0\\
+	%	1
+	%\end{bmatrix}
+\end{align*}
+Die Regelstrecke ist somit vollständig steuerbar, da die Regelungsnormalform existiert.
+\subsubsection*{Beobachtbarkeit}
+Um die Beobachtbarkeit direkt mithilfe der Übertragungsfunktion $G(s)$ bestimmen zu können, bilden wir die \textbf{Beobachtungsnormalform}:
+\begin{align*}
+	\dot{x}_B(t)&=A_Bx_B(t)+b_Bu(t),\hspace{20pt}x_B(0)=x_{B_0}\\
+	y(t)&=c^T_Bx_B(t)+du(t)
+\end{align*}
+mit
+\begin{align*}
+	A_B&=-a_0=3,\hspace{10pt}&b_B=b_0-b_na_0=1\\
+	c^T_B&=1,&d=0
+\end{align*}
+Die Regelstrecke ist somit vollständig beobachtbar, da die Beobachtungsnormalform existiert.
 
+
+\subsection*{b)}
+Zur Bestimmung der statischen Verstärkung benötigen wir zunächst die Führungsübertragungsfunktion $G_W(s)=\frac{Y(s)}{W(s)}$, wobei $R(s)=0$ gilt.
+\begin{align*}
+	Y(s)&=E(s)K(s)G(s)\\
+	Y(s)&=\bigl(W(s)-C(s)Y(s)\bigr)K(s)G(s)\\
+	\Leftrightarrow\frac{Y(s)}{K(s)G(s)}&=W(s)-C(s)Y(s)\\
+	\Leftrightarrow\frac{1+C(s)K(s)G(s)}{K(s)G(s)}&=\frac{W(s)}{Y(s)}\\
+	\Leftrightarrow G_W(s)=\frac{Y(s)}{W(s)}&=\frac{K(s)G(s)}{1+C(s)K(s)G(s)}
+\end{align*}
+Durch einsetzen der gegebenen Übertragungsfunktionen erhalten wir:
+\begin{align*}
+	\Leftrightarrow G_W(s)=\frac{k_p\frac{1}{s-3}}{1+\frac{1}{s+5}k_p\frac{1}{s-3}}=\frac{k_p(s+5)}{s^2+2s+k_p-15}
+\end{align*}
+Die statische Verstärkung in Abhängigkeit von $k_p$ erhält man nun mit:
+\begin{align*}
+	\Leftrightarrow G_W(0)=\frac{k_p(0+5)}{0^2+2\cdot0+k_p-15}=\frac{5k_p}{k_p-15}
+\end{align*}
+Die Regelabweichung $E(s)$ erhält man wie folgt, wobei $R(s)=0$ weiterhin gilt.
+\begin{align*}
+	E(s)&=W(s)-\hat{Y}(s)\\
+	E(s)&=W(s)-E(s)K(s)G(s)C(s)\\
+	%\Leftrightarrow E(s)\bigl(1+K(s)G(s)C(s)\bigr)&=W(s)\\
+	\Leftrightarrow E(s)&=\frac{W(s)}{1+K(s)G(s)C(s)}
+\end{align*}
+Führt man dem Regelkreis nun den Einheitssprung ein, d.h. $W(s)=\frac{1}{s}$, erhält man für $s=0$ und durch Einsetzen der Übertragungsfunktionen die bleibende Regelabweichung.
+\begin{align*}
+	\lim \limits_{s \to 0}E(s)&=\lim \limits_{s \to 0}\frac{1}{s\bigl(1+K(s)G(s)C(s)\bigr)}=\lim \limits_{s \to 0}\frac{1}{s+s\cdot k_p\cdot\frac{1}{s-3}\cdot\frac{1}{s+5}}\\
+	\lim \limits_{s \to 0}E(s)&=\lim \limits_{s \to 0}\frac{(s-3)\cdot(s+5)}{s\cdot(s^2+2\cdot s+k_p-15)}\\
+	\lim \limits_{s \to 0}E(s)&\underset{\text{l'Hospital}}{=}\lim \limits_{s \to 0}\frac{2\cdot s+2}{3\cdot s^2+4\cdot s+k_p-15}=\frac{2}{k_p-15}
+\end{align*}
+\newpage
+Zuerst betrachten wir die \textbf{Reihenschaltung} zweier Integretoren.
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[auto, node distance=2cm,>=latex']
