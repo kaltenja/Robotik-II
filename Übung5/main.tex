@@ -122,7 +122,7 @@ Die Regelabweichung $E(s)$ erhält man wie folgt, wobei $R(s)=0$ weiterhin gilt.
 	%\Leftrightarrow E(s)\bigl(1+K(s)G(s)C(s)\bigr)&=W(s)\\
 	\Leftrightarrow E(s)&=\frac{W(s)}{1+K(s)G(s)C(s)}
 \end{align*}
-Führt man dem Regelkreis nun den Einheitssprung ein, d.h. $W(s)=\frac{1}{s}$, erhält man für $s=0$ und durch Einsetzen der Übertragungsfunktionen die bleibende Regelabweichung.
+Führt man dem Regelkreis nun den Einheitssprung zu, d.h. $W(s)=\frac{1}{s}$, erhält man für $s=0$ und durch Einsetzen der Übertragungsfunktionen die bleibende Regelabweichung.
 \begin{align*}
 	\lim \limits_{s \to 0}E(s)&=\lim \limits_{s \to 0}\frac{1}{s\bigl(1+K(s)G(s)C(s)\bigr)}=\lim \limits_{s \to 0}\frac{1}{s+s\cdot k_p\cdot\frac{1}{s-3}\cdot\frac{1}{s+5}}\\
 	\lim \limits_{s \to 0}E(s)&=\lim \limits_{s \to 0}\frac{(s-3)\cdot(s+5)}{s\cdot(s^2+2\cdot s+k_p-15)}\\
