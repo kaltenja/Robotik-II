@@ -111,23 +111,49 @@ Durch einsetzen der gegebenen Übertragungsfunktionen erhalten wir:
 \begin{align*}
 	\Leftrightarrow G_W(s)=\frac{k_p\frac{1}{s-3}}{1+\frac{1}{s+5}k_p\frac{1}{s-3}}=\frac{k_p(s+5)}{s^2+2s+k_p-15}
 \end{align*}
-Die statische Verstärkung in Abhängigkeit von $k_p$ erhält man nun mit:
+Die statische Verstärkung $k_s$ in Abhängigkeit von $k_p$ erhält man nun mit:
 \begin{align*}
-	\Leftrightarrow G_W(0)=\frac{k_p(0+5)}{0^2+2\cdot0+k_p-15}=\frac{5k_p}{k_p-15}
+	\Leftrightarrow G_W(0)=k_s=\frac{k_p(0+5)}{0^2+2\cdot0+k_p-15}=\frac{5k_p}{k_p-15}
 \end{align*}
-Die Regelabweichung $E(s)$ erhält man wie folgt, wobei $R(s)=0$ weiterhin gilt.
+$E(s)$ erhält man wie folgt, wobei $R(s)=0$ weiterhin gilt.
 \begin{align*}
 	E(s)&=W(s)-\hat{Y}(s)\\
 	E(s)&=W(s)-E(s)K(s)G(s)C(s)\\
 	%\Leftrightarrow E(s)\bigl(1+K(s)G(s)C(s)\bigr)&=W(s)\\
 	\Leftrightarrow E(s)&=\frac{W(s)}{1+K(s)G(s)C(s)}
 \end{align*}
+Mithilfe von $E(s)$ erhält man nun die Regelabweichung $e(s)$:
+\begin{align*}
+	e(s)&=W(s)-Y(s)=W(s)-E(s)K(s)G(s)\\
+	e(s)&=W(s)\cdot\Bigl(1-\frac{K(s)G(s)}{1+K(s)G(s)C(s)}\Bigr)\\
+\end{align*}
 Führt man dem Regelkreis nun den Einheitssprung zu, d.h. $W(s)=\frac{1}{s}$, erhält man für $s=0$ und durch Einsetzen der Übertragungsfunktionen die bleibende Regelabweichung.
 \begin{align*}
-	\lim \limits_{s \to 0}E(s)&=\lim \limits_{s \to 0}\frac{1}{s\bigl(1+K(s)G(s)C(s)\bigr)}=\lim \limits_{s \to 0}\frac{1}{s+s\cdot k_p\cdot\frac{1}{s-3}\cdot\frac{1}{s+5}}\\
-	\lim \limits_{s \to 0}E(s)&=\lim \limits_{s \to 0}\frac{(s-3)\cdot(s+5)}{s\cdot(s^2+2\cdot s+k_p-15)}\\
-	\lim \limits_{s \to 0}E(s)&\underset{\text{l'Hospital}}{=}\lim \limits_{s \to 0}\frac{2\cdot s+2}{3\cdot s^2+4\cdot s+k_p-15}=\frac{2}{k_p-15}
+	\lim \limits_{s \to 0}s\cdot e(s)&=\lim \limits_{s \to 0}\frac{s}{s}\cdot\Bigl(1-\frac{k_p\cdot(s+5)}{s^2+2\cdot s+k_p-15}\Bigr)=-\frac{75}{k_p-15}-4
 \end{align*}
+\subsection*{c)}
+Um die Führungsübertragungsfunktion $G_{\hat{W}}=\frac{Y(s)}{\hat{W}(s)}$ zu bestimmen gilt $R(s)=0$. Wir verwenden die bereits in Teilaufgabe \textbf{b)} berechnete Führungsübertragungsfunktion $G_W$ und setzen nun $W(s)=V\hat{W}(s)$.
+\begin{align*}
+	G_{W}(s)=\frac{Y(s)}{V\hat{W}(s)}&=\frac{K(s)G(s)}{1+C(s)K(s)G(s)}\\
+	\Leftrightarrow G_{\hat{W}}(s)=\frac{Y(s)}{\hat{W}(s)}&=\frac{K(s)G(s)V}{1+C(s)K(s)G(s)}
+\end{align*}
+\subsection*{d)}
+Die Regelabweichung $e(s)$ mit dem Vorfilter $V$ ist nun:
+\begin{align*}
+	e(s)=V\hat{W}(s)-Y(s)=V\hat{W}(s)\cdot\Bigl(1-\frac{K(s)G(s)}{1+K(s)G(s)C(s)}\Bigl)
+\end{align*}
+Führt man dem Regelkreis nun den Einheitssprung zu, d.h. $\hat{W}(s)=\frac{1}{s}$, erhält man für $s=0$ und durch Einsetzen der Übertragungsfunktionen die bleibende Regelabweichung mit dem Vorfilter $V$.
+\begin{align*}
+	\lim \limits_{s \to 0}s\cdot e(s)&=\lim \limits_{s \to 0}V\cdot\frac{s}{s}\cdot\Bigl(1-\frac{k_p\cdot(s+5)}{s^2+2\cdot s+k_p-15}\Bigr)=-\frac{75\cdot V}{k_p-15}-4
+\end{align*}
+Der Vorfilter $V$ kann nun wie folgt berechnet werden um die bleibende Regelabweichung zu eliminieren:
+\begin{align*}
+	0&=-\frac{75\cdot V}{k_p-15}-4\\
+\Leftrightarrow V&=-\frac{4\cdot(k_p-15)}{75}
+\end{align*}
+
+
+
 \newpage
 Zuerst betrachten wir die \textbf{Reihenschaltung} zweier Integretoren.
 \begin{figure}[H]
