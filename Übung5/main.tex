@@ -144,12 +144,12 @@ Die Regelabweichung $e(s)$ mit dem Vorfilter $V$ ist nun:
 \end{align*}
 Führt man dem Regelkreis nun den Einheitssprung zu, d.h. $\hat{W}(s)=\frac{1}{s}$, erhält man für $s=0$ und durch Einsetzen der Übertragungsfunktionen die bleibende Regelabweichung mit dem Vorfilter $V$.
 \begin{align*}
-	\lim \limits_{s \to 0}s\cdot e(s)&=\lim \limits_{s \to 0}V\cdot\frac{s}{s}\cdot\Bigl(1-\frac{k_p\cdot(s+5)}{s^2+2\cdot s+k_p-15}\Bigr)=-\frac{75\cdot V}{k_p-15}-4
+	\lim \limits_{s \to 0}s\cdot e(s)&=\lim \limits_{s \to 0}V\cdot\frac{s}{s}\cdot\Bigl(1-\frac{k_p\cdot(s+5)}{s^2+2\cdot s+k_p-15}\Bigr)=-\Bigl(\frac{75}{k_p-15}-4\Bigr)\cdot V
 \end{align*}
 Der Vorfilter $V$ kann nun wie folgt berechnet werden um die bleibende Regelabweichung zu eliminieren:
 \begin{align*}
-	0&=-\frac{75\cdot V}{k_p-15}-4\\
-\Leftrightarrow V&=-\frac{4\cdot(k_p-15)}{75}
+	0&=-\Bigl(\frac{75}{k_p-15}-4\Bigr)\cdot V\\
+\Leftrightarrow V&=\frac{4\cdot k_p+15}{k_p-15}
 \end{align*}
 
 \section*{Aufgabe 5-2. Drehzahlregler für einen Motor (5 Punkte)}
