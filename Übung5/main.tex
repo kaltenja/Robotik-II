@@ -152,9 +152,55 @@ Der Vorfilter $V$ kann nun wie folgt berechnet werden um die bleibende Regelabwe
 \Leftrightarrow V&=-\frac{4\cdot(k_p-15)}{75}
 \end{align*}
 
+\section*{Aufgabe 5-2. Drehzahlregler für einen Motor (5 Punkte)}
+\subsection*{a)}
+Um zu Prüfen ob der Motor vollständig steuerbar ist, verwenden wir das Steuerbarkeitskriterium von Kalman. Zuerst berechnet wir hierfür die Steuerbarkeitsmatrix $S_S$:
+\begin{align*}
+S_S=
+\begin{bmatrix}
+b &Ab
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & \frac{K_\tau}{J\cdot L}\\ \frac{1}{L} &-\frac{R^2}{L^2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & \frac{6\cdot 10^{-3}\frac{Nm}{A}}{8\cdot 10^{-8}kgm^2\cdot 10^{-4}H}\\ \frac{1}{10^{-4}H} &-\frac{(5\Omega)^2}{(10^{-4}H)^2}
+\end{bmatrix}
+\end{align*}
+Der Motor ist vollständig steuerbar falls die Determinate der Steuerbarkeitsmatrix ungleich null ist:
+
+\begin{align*}
+\text{det} \hspace{3pt} S_S=-7.5\cdot 10^{12}\neq0
+\end{align*}
+Der Motor ist somit vollständig steuerbar.
+\subsection*{b)}
+Die Eigenwerte des geschlossenen Regelkreises sollen bei $\lambda_1=-10$ und $\lambda_2=-15$ liegen, was zu folgenden gewünschtem charakteristischen Polynom führt:
+\begin{align*}
+	\bar{p}(\lambda)=(\lambda-\bar{\lambda}_1)(\lambda-\bar{\lambda}_2)=(\lambda+10)(\lambda+15)=\lambda^2+\underbrace{25}_{\bar{a}_1}\cdot\lambda+\underbrace{150}_{\bar{a}_0}
+\end{align*}
+Mithilfe der Ackermann-Formel können wir nun die Zustandsrückführung $k^T$ berechnen, wobei ${S'}_S$ die letzte Zeile der Inversen der Steuerbarkeitsmatrix $S_S$ darstellt:
+\begin{align*}
+	k^T={S'}^T_S\bigl(\bar{a}_0I+\bar{a}_1A+A^2\bigr)=
+	\begin{bmatrix}
+		\frac{J\cdot L}{K_\tau} & 0
+	\end{bmatrix}
+	\bigl(150\cdot I+25\cdot A+A^2\bigr)=
+	\begin{bmatrix}
+		-\frac{275032831}{4.8\cdot 10^{10}}&-\frac{399813}{8\cdot 10^4}
+	\end{bmatrix}
+\end{align*}
+Der Vorfilter $V$ für die Zustandsrückführung wird nun wie folgt berechnet:
+\begin{align*}
+	V&=-\bigl(C(A-Bk^T)^{-1}B\bigl)^{-1}=\frac{4.8\cdot 10^{10}\cdot b\cdot R-239887.8\cdot 10^6\cdot b+(4.8\cdot 10^{10}\cdot K_m-275032831)\cdot K_\tau}{4.8\cdot 10^{10}\cdot K_\tau}\\
+	V&=2\cdot 10^{-7}
+\end{align*}
+\subsection*{c)}
+Soll eine Zustandsrückführung technisch realisiert werden, müssen alle Zustandsvariablen messbar sein (oder zumindest aus den gemessenen Ausgangsgrößen rekonstruierbar sein, d.h. beobachtbar!)
 
 
-\section*{Aufgabe5-3. Reglerentwurf durch Polzuweisung für das Pendel am Wagen (5Punkte)}
+\section*{Aufgabe 5-3. Reglerentwurf durch Polzuweisung für das Pendel am Wagen (5 Punkte)}
 \subsection*{a)}
 Die Berechnung der Eigenwerte ohne Zustandsrückführung zeigt, dass das System nicht stabil ist.
 \begin{align*}
