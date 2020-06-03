@@ -58,6 +58,36 @@
 
 \section*{Aufgabe 6-1. Zustandsrückführung und Vorfilter (7 Punkte)}
 \subsection*{a)}
-
+Die bleibende Regelabweichung $e(\infty)$ für eine sprungförmige Führungsgröße $w(\infty)=1$ berechnet sich wie folgt:
+\begin{align*}
+	e(\infty)&=w(\infty)-y(\infty)=w(\infty)+C(A-BK)^{-1}Bw(\infty)\\
+	e(\infty)&=(I+C(A-BK)^{-1}B)w(\infty)\\
+	e(\infty)&=\Biggl(1+\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}0&1\\-5&-2\end{bmatrix}^{-1}\begin{bmatrix}0\\0.5\end{bmatrix}\Biggr)\cdot 1=0.9
+\end{align*}
+\subsection*{b)}
+Der Vorfilter $V$ berechnet sich nun wie folgt:
+\begin{align*}
+	V&=-(C(A-BK)^{-1}B)^{-1}=-\Biggl(\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}0&1\\-5&-2\end{bmatrix}^{-1}\begin{bmatrix}0\\0.5\end{bmatrix}\Biggr)^{-1}\\
+	V&=10
+\end{align*}
+Durch den Vorfilter ändert sich das Zustandsraummodell zu:
+\begin{align*}
+	\dot{x}(t)&=\begin{bmatrix}0&1\\-5&-2\end{bmatrix}x(t)+\begin{bmatrix}0\\5\end{bmatrix}w(t)+\begin{bmatrix}0\\0.25\end{bmatrix}d(t)\hspace{20pt} x(0)=x_0\\
+	y(t)&=\begin{bmatrix}1&0\end{bmatrix}x(t)
+\end{align*}
+\subsection*{c)}
+Die Berechnung der bleibenden Regelabweichung ohne Störgröße folgt dem selben Prinzip wie in Teilaufgabe \textbf{a)}:
+\begin{align*}
+	e(\infty)&=w(\infty)-y(\infty)=w(\infty)+C(A-BK)^{-1}Bw(\infty)\\
+	e(\infty)&=(I+C(A-BK)^{-1}B)w(\infty)\\
+	e(\infty)&=\Biggl(1+\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}0&1\\-5&-2\end{bmatrix}^{-1}\begin{bmatrix}0\\5\end{bmatrix}\Biggr)\cdot 1=0
+\end{align*}
+Druch den Vorfilter konnte die bleibende Regelabweichung eliminiert werden. Wirkt nun jedoch zusätzlich eine sprungförmige Störgröße $d(\infty)=1$, ändert sich die Berechnungsvorschrift für die bleibende Regelabweichung wie folgt:
+\begin{align*}
+	e(\infty)&=w(\infty)-y(\infty)=w(\infty)+C(A-BK)^{-1}Bw(\infty)+C(A-BK)^{-1}Ed(\infty)\\
+	e(\infty)&=1+\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}0&1\\-5&-2\end{bmatrix}^{-1}\begin{bmatrix}0\\5\end{bmatrix}\cdot 1+\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}0&1\\-5&-2\end{bmatrix}^{-1}\begin{bmatrix}0\\0.25\end{bmatrix}\cdot 1\\
+	e(\infty)&=-0.05
+\end{align*}
+Für eine Störung $d(t)\neq 0$ ergibt sich stets eine bleibende Regelabweichung, d.h. $e(\infty)\neq 0$.
 
 \end{document}
