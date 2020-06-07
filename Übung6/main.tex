@@ -90,4 +90,109 @@ Druch den Vorfilter konnte die bleibende Regelabweichung eliminiert werden. Wirk
 \end{align*}
 Für eine Störung $d(t)\neq 0$ ergibt sich stets eine bleibende Regelabweichung, d.h. $e(\infty)\neq 0$.
 
+\subsection*{d)}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sprung_sprung.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 6-1.1: Antwort des geschlossenen Regelkreises für den Fall einer sprungförmigen Führungsgröße $w$ und einer sprungförmigen Störgröße $d$.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sprung_impuls.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 6-1.2: Antwort des geschlossenen Regelkreises für den Fall einer sprungförmigen Führungsgröße $w$ und einer impulsförmigen Störgröße $d$.}
+\end{figure}
+
+\section*{6-2: Ackermann-Formel (3 Punkte)}
+Die Ackerman-Formel ergibt sich zuallererst aus der Umstellung zu
+\begin{align*}
+k^T &= k_R^TT_R^{-1} = \left( \begin{pmatrix}
+\bar{a}_0 & \bar{a}_1 & \hdots & \bar{a}_{n-1}
+\end{pmatrix} - \begin{pmatrix}
+a_0 & a_1 & \hdots & a_{n-1}
+\end{pmatrix} 
+\right) T_R^{-1}.
+\end{align*}
+Anschließend wird die Transformationsmatrix
+\begin{align*}
+T_R^{-1} &= \begin{pmatrix}
+s_R^T \\
+s_R^TA \\
+\vdots \\
+s_R^TA^{n-1}
+\end{pmatrix}
+\end{align*}
+direkt eingesetzt, um eine extra Berechnung zu vermeiden:
+\begin{align*}
+k^T=\begin{pmatrix}
+\bar{a}_0 & \bar{a}_1 & \hdots & \bar{a}_{n-1}
+\end{pmatrix} \begin{pmatrix}
+s_R^T \\
+s_R^TA \\
+\vdots \\
+s_R^TA^{n-1}
+\end{pmatrix} - \underbrace{\begin{pmatrix}
+a_0 & a_1 & \hdots & a_{n-1}
+\end{pmatrix} \begin{pmatrix}
+s_R^T \\
+s_R^TA \\
+\vdots \\
+s_R^TA^{n-1}
+\end{pmatrix}}_{=-s_R^TA^n}
+\end{align*}
+Ausgeschrieben ergibt dies die Ackermann-Formel.
+\begin{align*}
+k^T &= \begin{pmatrix}
+\bar{a}_0 & \bar{a}_1 & \bar{a}_2 & \hdots & \bar{a}_{n-1} & 1
+\end{pmatrix} \begin{pmatrix}
+s_R^T \\
+s_R^TA \\
+\vdots \\
+s_R^TA^{n-1} \\
+s_r^TA^n
+\end{pmatrix} \\
+k^T &= s_R^T \left( \bar{a}_0\textit{\textbf{I}} + \bar{a}_1\textit{\textbf{A}} + \bar{a}_2\textit{\textbf{A}}^2 +  \hdots + \bar{a}_{n-1}\textit{\textbf{A}}^{n-1} + \textbf{\textit{A}}^n \right)
+\end{align*}
+
+\section*{6-3: Ausgangsrückführung (3 Punkte)}
+\subsection*{a)}
+Das resultierende ZMR ist
+\begin{align*}
+\dot{x}(t) &= \begin{bmatrix}
+-26 &  20 \\
+-30 &  23
+\end{bmatrix} x(t) + \begin{bmatrix}
+1 \\ 1
+\end{bmatrix} u(t) \\
+y(t) &= \begin{bmatrix}
+-9 & 7
+\end{bmatrix} x(t)
+\end{align*}
+mit
+\begin{align*}
+K = \begin{bmatrix}
+27 & -21
+\end{bmatrix}
+\end{align*}
+
+\subsection*{b)}
+Das resultierende ZMR ist
+\begin{align*}
+\dot{x}(t) &= \begin{bmatrix}
+-26 &  20 \\
+-30 &  23
+\end{bmatrix} x(t) + \begin{bmatrix}
+1 \\ 1
+\end{bmatrix} u(t) \\
+y(t) &= \begin{bmatrix}
+-9 & 7
+\end{bmatrix} x(t)
+\end{align*}
+mit
+\begin{align*}
+K_y = -3
+\end{align*}
+
 \end{document}

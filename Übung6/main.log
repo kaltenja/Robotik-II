@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.5)  3 JUN 2020 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.30)  7 JUN 2020 21:45
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 8 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2017/09/07 v3.24 KOMA-Script document class (article)
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -216,8 +216,6 @@ File: babel.def 2018/02/14 3.18 Babel common definitions
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@dirlevel=\count109
 )
-\l@british = a dialect from \language\l@english 
-\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -1668,34 +1666,102 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 93.
+
+<Figures/sprung_sprung.png, id=20, 1513.655pt x 884.30376pt>
+File: Figures/sprung_sprung.png Graphic file (type png)
+<use Figures/sprung_sprung.png>
+Package pdftex.def Info: Figures/sprung_sprung.png  used on input line 96.
+(pdftex.def)             Requested size: 426.79135pt x 249.33052pt.
+
+Underfull \hbox (badness 1009) in paragraph at lines 98--98
+[][][]|\T1/futs/m/n/10.95 Abb. 6-1.1: Antwort des geschlosse-nen Regelkreises f
+ür den Fall einer sprungför-mi-gen
+ []
+
+<Figures/sprung_impuls.png, id=21, 1501.61pt x 878.28125pt>
+File: Figures/sprung_impuls.png Graphic file (type png)
+<use Figures/sprung_impuls.png>
+Package pdftex.def Info: Figures/sprung_impuls.png  used on input line 103.
+(pdftex.def)             Requested size: 426.79135pt x 249.62929pt.
+
+Underfull \hbox (badness 1009) in paragraph at lines 105--105
+[][][]|\T1/futs/m/n/10.95 Abb. 6-1.2: Antwort des geschlosse-nen Regelkreises f
+ür den Fall einer sprungför-mi-gen
+ []
+
+[2 <./Figures/sprung_sprung.png>]
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 108.
+
+LaTeX Font Info:    Font shape `T1/futs/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/futs/b/it' tried instead on input line 157.
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 159.
+
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 160.
+
+[3 <./Figures/sprung_impuls.png>]
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 180.
+
+[4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
- 26950 strings out of 494871
- 537348 string characters out of 6178383
- 734790 words of memory out of 5000000
- 29793 multiletter control sequences out of 15000+600000
- 97119 words of font info for 104 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 67i,20n,67p,8815b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 26999 strings out of 494880
+ 538104 string characters out of 6179601
+ 736665 words of memory out of 5000000
+ 29809 multiletter control sequences out of 15000+600000
+ 132720 words of font info for 121 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 67i,22n,67p,8815b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/adobe/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utop
-ia/putri8a.pfb>
-Output written on main.pdf (2 pages, 54266 bytes).
+1/adobe/utopia/putbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/uto
+pia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.
+pfb>
+Output written on main.pdf (4 pages, 106217 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 69 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
