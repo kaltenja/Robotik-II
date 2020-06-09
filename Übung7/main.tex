@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wenneker Assignment
+% LaTeX Template
+% Version 2.0 (12/1/2019)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@LaTeXTemplates.com)
+% Frits Wenneker
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{scrartcl} % Font size
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{	
+	\normalfont\normalsize
+	\textsc{Universität Würzburg}\\ % Your university, school and/or department name(s)
+	\vspace{25pt} % Whitespace
+	\rule{\linewidth}{0.5pt}\\ % Thin top horizontal rule
+	\vspace{20pt} % Whitespace
+	{\huge Übung 7}\\ % The assignment title
+	{\Large Ausgangsrückführung, LQR}\\
+	\vspace{12pt} % Whitespace
+	\rule{\linewidth}{2pt}\\ % Thick bottom horizontal rule
+	\vspace{12pt} % Whitespace
+}
+
+\author{\LARGE Alexander Björk, Janis Kaltenthaler} % Your name
+
+\date{\normalsize\today} % Today's date (\today) or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\newcommand{\inte}{$\displaystyle \int$}
+
+\section*{Aufgabe 7-1. Ausgangsrückführung (7 Punkte)}
+\subsection*{a)}
+Damit die Pole des geschlossenen Regelkreises bei den geforderten Werten liegen, ergibt sich durch die Berechnung in Matlab die folgende Regelmatrix:
+\begin{align*}
+	K_x=\begin{bmatrix}1.6205\\-1.41\end{bmatrix}
+\end{align*}
+Der Vorfilter $V$ wird nun wie folgt bestimmt:
+\begin{align*}
+	V_x=-\bigl(C(A-BK_x)^{-1}B\bigr)^{-1}=0.052632
+\end{align*}
+Das resultierende Zustandsraummodell mit Zustandsrückführung erhält man nun wie folgt:
+\begin{align*}
+	\dot{x}(t)&=(A-BK_x)x(t)+BV_xw(t)=\begin{bmatrix}-0.24100&-0.17993\\-2.16205&-2.85900\end{bmatrix}x(t)+\begin{bmatrix}0.1052632\\0.0052632\end{bmatrix}w(t)\\
+	y(t)&=Cx(t)=\begin{bmatrix}1&0\end{bmatrix}
+\end{align*}
+\subsection*{b)}
+Das System mit Ausgangsrückführung ist stabil, falls alle Pole des geschlossenen Regelkreis mit Ausgangsrückführung einen negativen Realteil besitzen. Um dies zu Prüfen nutzen wir das Hurwitz-Kriterium. Die System Matrix $\bar{A}$ des geschlossenen Regelkreises berechnet sich wie folgt:
+\begin{align*}
+	\bar{A}=A-Bk_yC=\begin{bmatrix}3-2\cdot k_y&-3\\-0.1\cdot k_y-2&-3 \end{bmatrix}
+\end{align*}
+Das charakteristische Polynom des geschlossenen Regelkreises berechnet sich wie folgt:
+\begin{align*}
+	\text{det}(\bar{A}-\lambda I)=\underbrace{1}_{a_0}\cdot\lambda^2+\underbrace{2\cdot k_y}_{a_1}\cdot\lambda+\underbrace{5.7\cdot k_y-15}_{a_2}
+\end{align*}
+Daraus ergibt sich die Hurwitzmatrix:
+\begin{align*}
+	H=\begin{bmatrix}a_1&a_3\\a_0&a_2 \end{bmatrix}=\begin{bmatrix}2\cdot k_y&0\\1&5.7\cdot k_y-15 \end{bmatrix}
+\end{align*}
+Die zwei Hauptabschnittsdeterminanten $D_1$ und $D_2$ werden wie folgt berechnet:
+\begin{align*}
+	D_1&=a_1=2\cdot k_y\\
+	D_2&=\text{det}\Biggl(\begin{bmatrix}2\cdot k_y&0\\1&5.7\cdot k_y-15 \end{bmatrix}\Biggr)=2\cdot k_y\cdot(5.7\cdot k_y-15)
+\end{align*}
+Das betrachtete System ist stabil falls alle Koeffizienten $a_i$ und alle Hauptabschnittsdeterminanten $D_i$ positiv sind. Daher ist das System stabil für $k_y>\frac{15}{5.7}\approx2.63$ und somit durch eine Ausgangsrückführung stabilisierbar.
+\subsection*{c)}
+Zuerst prüfen wir ob die Zustandsrückführung durch eine Ausgangsrückführung ersetzt werden kann:
+\begin{align*}
+	\text{Rang}\begin{bmatrix}C\\K\end{bmatrix}=2\neq\text{Rang }C=1
+\end{align*}
+Da die Ränge nicht gleich sind ist eine direkte Ersetzung nicht möglich.\\
+Nun berechnen wir die Eigenvektormatrix $\bar{V}$ von $A-BK_x$:
+\begin{align*}
+	V=\begin{bmatrix}0.787112&0.065079\\-0.616810&0.997880\end{bmatrix}
+\end{align*}
+Die Wichtungsmatrix $W$ wird wie folgt definiert:
+\begin{align*}
+	W=\begin{bmatrix}1&0\\0&1\end{bmatrix}
+\end{align*}
+Nun ermitteln wir die Ausgangsrückführung $K_y$ nach Gleichung:
+\begin{align*}
+	k_y=KVW(CVW)^T\bigl((CVW)(CVW)^T\bigr)^{-1}=2.5712
+\end{align*}
+Um zu Prüfen ob die Güteforderungen erfüllt werden, d.h. ob das resultierende System stabil ist, berechnen wir die Eigenwerte der Systemmatrix $A-Bk_yC$:
+\begin{align*}
+	\lambda_1=0.066126,\hspace{3pt}\lambda_2=-5.208437
+\end{align*}
+Wegen $\lambda_1>0$ ist das System nicht stabil. Entsprechend passen wir die Wichtungsfunktion an, damit $\lambda_1$ genauer an den geforderten Eigenwert von $-0.1$ angenähert wird:
+\begin{align*}
+	W=\begin{bmatrix}2&0\\0&1\end{bmatrix}
+\end{align*}
+Nun erhalten wir eine Ausgangsrückführung von:
+\begin{align*}
+	k_y=2.6867
+\end{align*}
+mit den Eigenwerten:
+\begin{align*}
+	\lambda_1=-0.059103,\hspace{3pt}\lambda_2=-5.314262
+\end{align*}
+Das System ist nun dementsprechend stabil.\\
+Der Vorfilter $V_y$ zur Sicherung der Sollwertfolge bei der Ausgangsrückführung berechnet sich wie folgt:
+\begin{align*}
+	V_y=-\bigl(C(A-Bk_yC)^{-1}B\bigr)^{-1}=0.055103
+\end{align*}
+Das resultierende Zustandsraummodell mit Ausgangsrückführung erhält man nun wie folgt:
+\begin{align*}
+	\dot{x}(t)&=(A-BK_yC)x(t)+BV_yw(t)=\begin{bmatrix}-2.3734&-3.0000\\-2.2687&-3.0000\end{bmatrix}x(t)+\begin{bmatrix}0.1102067\\0.0055103\end{bmatrix}w(t)\\
+	y(t)&=Cx(t)=\begin{bmatrix}1&0\end{bmatrix}
+\end{align*}
+
+\end{document}
