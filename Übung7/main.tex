@@ -167,5 +167,74 @@ Damit erhält man das resultierende Zustandsraummodell:
 \end{align*}
 
 
+\section*{Aufgabe 7-3. LQ-Regler für das Pendel am Wagen (4 Punkte)}
+\subsection*{a)}
+Um den Vorfilter für die Zustandsrückführung zu berechnen musste eine Pseudoinverse (\verb+pinv+, welches die Moore-Penrose Pseudoinverse liefert) berechnet werden, da die Matrix
+\begin{align*}
+C\left(A-BK)B\right)
+\end{align*}
+nicht quadratisch ist.\\
+
+$\mathbf{x_0=\left[ 0.3, 0, 0.15, 0 \right]^T:}$\\
+
+Die Standardparameter $R=1$ und $Q=1 \cdot \mathit{I}(4)$ ermöglichten bereits eine Stabilisierung des System um die instabile Ruhelage. Die Berechnung der Regelmatrix lieferte
+\begin{align*}
+K = \begin{bmatrix}
+     -1.0000  & -2.6034 & -24.0392 &  -4.4759
+\end{bmatrix}.
+\end{align*}
+Die Wagenposition bewegt sich im Bereich $x \in \left[-2.18\cdot 10^{-4}, 0.5221\right]$ und der Pendelwinkel in $\theta \in \left[-0.0563, 0.15\right]$. Damit wurden die Gütekriterien eingehalten.\\
+
+Die Beruhigungszeit mit einer Toleranz von 2cm ist 5.0712s.\\
+
+$\mathbf{x_0=\left[ 0.3, 0, -0.15, 0 \right]^T:}$\\
+
+Die Wagenposition bewegt sich im Bereich $x \in \left[-0.0755, 0.3\right]$ und der Pendelwinkel in $\theta \in \left[-0.15, 0.0333\right]$. Damit wurden die Gütekriterien eingehalten.\\
+
+Die Beruhigungszeit mit einer Toleranz von 2cm ist 4.1843s.\\
+
+Durch verändern von $R$ und $Q$ wurde für $x_0=\left[ 0.3, 0, 0.15, 0 \right]^T$ eine Beruhigungszeit von 0.6766s erreicht. In dieser Simulation war
+\begin{align*}
+R = 0.001
+\end{align*}
+und
+\begin{align*}
+Q = \begin{bmatrix}
+10^{-6} & 0 & 0 & 0 \\
+0 & 0.1 & 0 & 0 \\
+0 & 0 & 0.1 & 0 \\
+0 & 0 & 0 & 0.1
+\end{bmatrix}
+\end{align*}
+und damit
+\begin{align*}
+K =  10^4 \begin{bmatrix}
+   -3.1623  & -1.2097  & -2.2704  & -0.4234
+\end{bmatrix}
+\end{align*}
+Die Gütekriterien wurden eingehalten.\\
+
+Für $x_0=\left[ 0.3, 0, -0.15, 0 \right]^T$ wurde mit den selben Parametern eine Beruhigungszeit von 0.6085s erreicht.
+
+\subsection*{b)}
+Der "Standard"-Regler mit $R=1$ und $Q=\mathit{I}$ war erfolgreich.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{default.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 7-3.1: Scope des Pendels am Wagen mit Standard-LQ-Regler.}
+\end{figure}
+
+
+
+
+Der Regler mit $R=1$ und $Q=\text{diag}(1000, 0.1, 0.1, 0.1)$ war erfolgreich.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{optimal.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 7-3.2: Scope des Pendels am Wagen mit schnellem LQ-Regler.}
+\end{figure}
 
 \end{document}
