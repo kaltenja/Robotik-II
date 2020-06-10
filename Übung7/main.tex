@@ -56,7 +56,7 @@
 \tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
 \newcommand{\inte}{$\displaystyle \int$}
 
-\section*{Aufgabe 7-1. Ausgangsrückführung (7 Punkte)}
+\section*{Aufgabe 7-1. Ausgangsrückführung (5 Punkte)}
 \subsection*{a)}
 Damit die Pole des geschlossenen Regelkreises bei den geforderten Werten liegen, ergibt sich durch die Berechnung in Matlab die folgende Regelmatrix:
 \begin{align*}
@@ -134,5 +134,38 @@ Das resultierende Zustandsraummodell mit Ausgangsrückführung erhält man nun w
 	\dot{x}(t)&=(A-BK_yC)x(t)+BV_yw(t)=\begin{bmatrix}-2.3734&-3.0000\\-2.2687&-3.0000\end{bmatrix}x(t)+\begin{bmatrix}0.1102067\\0.0055103\end{bmatrix}w(t)\\
 	y(t)&=Cx(t)=\begin{bmatrix}1&0\end{bmatrix}
 \end{align*}
+\section*{Aufgabe 7-2. LQ-Regler (3 Punkte)}
+\subsection*{a)}
+Die LQ-Regelung kann angewendet werden falls das System vollständig steuerbar ist.\\
+Um auf Steuerbarkeit zu Prüfen berechnen wir zunächst die Steuerbarkeitsmatrix $S_S$:
+\begin{align*}
+	S_S=\begin{bmatrix}b&Ab\end{bmatrix}=\begin{bmatrix}0&1\\1&4\end{bmatrix}
+\end{align*}
+Nach dem Steuerbarkeitskriterium von Kalman ist das System vollständig steuerbar, wenn die Determinate von $S_S$ undgleich null ist:
+\begin{align*}
+	\text{det}\hspace{3pt}S_S=-1
+\end{align*}
+Das System ist vollständig steuerbar und die LQ-Regelung kann angewendet werden.
+\subsection*{b)}
+Die Lösung der Riccatigleichung wurde mit Matlab berechnet:
+\begin{align*}
+	P=\begin{bmatrix}4&12\\12&70\end{bmatrix}
+\end{align*}
+Die Regelmatrix $K$ des geschlossenen Regelkreises mit Zustandsrückführung wird nun wie folgt mit der Gleichung für den Optimalregler:
+\begin{align*}
+	K&=R^{-1}B^TP=2^{-1}\cdot\begin{bmatrix}0\\1\end{bmatrix}^T\cdot\begin{bmatrix}4&12\\12&70\end{bmatrix}\\
+	K&=\frac{1}{2}\cdot\begin{bmatrix}0&1\end{bmatrix}\cdot\begin{bmatrix}4&12\\12&70\end{bmatrix}=\begin{bmatrix}6&35\end{bmatrix}
+\end{align*}
+Anschließend kann der Vorfilter $V$ berechnet werden:
+\begin{align*}
+	V=-\bigl(C(A-BK)^{-1}B\bigr)^{-1}=5
+\end{align*}
+Damit erhält man das resultierende Zustandsraummodell:
+\begin{align*}
+	\dot{x}(t)&=(A-BK)x(t)+BVw(t)=\begin{bmatrix}0&1\\-5&-31\end{bmatrix}x(t)+\begin{bmatrix}0\\5\end{bmatrix}w(t)\\
+	y(t)&=Cx(t)=\begin{bmatrix}1&0\end{bmatrix}
+\end{align*}
+
+
 
 \end{document}
