@@ -1,0 +1,91 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wenneker Assignment
+% LaTeX Template
+% Version 2.0 (12/1/2019)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@LaTeXTemplates.com)
+% Frits Wenneker
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{scrartcl} % Font size
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{	
+	\normalfont\normalsize
+	\textsc{Universität Würzburg}\\ % Your university, school and/or department name(s)
+	\vspace{25pt} % Whitespace
+	\rule{\linewidth}{0.5pt}\\ % Thin top horizontal rule
+	\vspace{20pt} % Whitespace
+	{\huge Übung 8}\\ % The assignment title
+	{\Large Beobachter}\\
+	\vspace{12pt} % Whitespace
+	\rule{\linewidth}{2pt}\\ % Thick bottom horizontal rule
+	\vspace{12pt} % Whitespace
+}
+
+\author{\LARGE Alexander Björk, Janis Kaltenthaler} % Your name
+
+\date{\normalsize\today} % Today's date (\today) or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\newcommand{\inte}{$\displaystyle \int$}
+
+\section*{Aufgabe 8-1. Beobachterentwurf (3 Punkte)}
+\subsection*{a)}
+Zu prüfen ist ob die Regelstrecke vollständig steuerbar und vollständig beobachtbar ist:
+\subsubsection*{Steuerbarkeit}
+\begin{align*}
+	S_S&=\begin{bmatrix}b&Ab \end{bmatrix}=\begin{bmatrix}0&-0.5\\0.5&-1 \end{bmatrix}\\
+	\text{det}\hspace{3pt}S_S&=0.25\neq0
+\end{align*}
+Die Regelstrecke ist vollständig Steuerbar.
+\subsubsection*{Beobachtbarkeit}
+\begin{align*}
+	S_B&=\begin{bmatrix}C\\CA \end{bmatrix}=\begin{bmatrix}0&1\\1&-2 \end{bmatrix}\\
+	\text{det}\hspace{3pt}S_B&=-1\neq0
+\end{align*}
+Die Regelstrecke ist vollsträndig beobachtbar.
+\subsection*{b)}
+Aufgrund der Strucktur des gegebenen Zustandsraummodells wissen wir dass dieses in der Beobachtungsnormalform vorliegt.\\
+Die geforderten Eigenwerte des Beobachtermodells sind mit $\lambda_{B1}=-4$ und $\lambda_{B2}=-3$ gegeben. Daraus ergibt sich folgendes charakteristisches Polynom:
+\begin{align*}
+	p(\lambda_B)=\lambda^2+\underbrace{7}_{a_{B1}}\cdot\lambda+\underbrace{12}_{a_{B_0}}
+\end{align*}
+Die Koeffizienten $a_0=1$ und $a_1=2$ des charakteristischen Polynomes der Regelstrecke erhalten wird durch Ablesen aus dem gegebenen Zustandsraummodells.\\
+Wie folgt kann nun die Beobachterrückführung berechnet werden:
+\begin{align*}
+	l^T=\begin{bmatrix}a_{B0}&a_{B1}\end{bmatrix}-\begin{bmatrix}a_{0}&a_{1}\end{bmatrix}=\begin{bmatrix}11&5\end{bmatrix}
+\end{align*}
+Der Luenbergerbeobachter für das gegebene System hat nun die folgende Form:
+\begin{align*}
+	\dot{\hat{x}}(t)&=(A-lc^t)\hat{x}(t)+bu(t)+ly(t)\\
+	\dot{\hat{x}}(t)&=\begin{bmatrix}0&-12\\1&-7\end{bmatrix}\hat{x}(t)+\begin{bmatrix}0\\0.5\end{bmatrix}u(t)+\begin{bmatrix}11\\5\end{bmatrix}y(t)
+\end{align*}
+
+\end{document}
