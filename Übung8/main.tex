@@ -82,10 +82,52 @@ Wie folgt kann nun die Beobachterrückführung berechnet werden:
 \begin{align*}
 	l^T=\begin{bmatrix}a_{B0}&a_{B1}\end{bmatrix}-\begin{bmatrix}a_{0}&a_{1}\end{bmatrix}=\begin{bmatrix}11&5\end{bmatrix}
 \end{align*}
-Der Luenbergerbeobachter für das gegebene System hat nun die folgende Form:
+
+%Der Luenbergerbeobachter für das gegebene System hat nun die folgende Form:
+%\begin{align*}
+%	\dot{\hat{x}}(t)&=(A-lc^t)\hat{x}(t)+bu(t)+ly(t)\\
+%	\dot{\hat{x}}(t)&=\begin{bmatrix}0&-12\\1&-7\end{bmatrix}\hat{x}(t)+\begin{bmatrix}0\\0.5\end{bmatrix}u(t)+\begin{bmatrix}11\\5\end{bmatrix}y(t)
+%\end{align*}
+Das Zustandsraummodell der Regelstrecke und des Beobachters erhält man wie folgt:
 \begin{align*}
-	\dot{\hat{x}}(t)&=(A-lc^t)\hat{x}(t)+bu(t)+ly(t)\\
-	\dot{\hat{x}}(t)&=\begin{bmatrix}0&-12\\1&-7\end{bmatrix}\hat{x}(t)+\begin{bmatrix}0\\0.5\end{bmatrix}u(t)+\begin{bmatrix}11\\5\end{bmatrix}y(t)
+	\dot{\tilde{x}}(t)&=\begin{bmatrix}\dot{x}(t)\\\dot{\hat{x}}(t)\end{bmatrix}=\begin{bmatrix}A&0\\lc^T&A-lc^T\end{bmatrix}\cdot\begin{bmatrix}x(t)\\\hat{x}(t)\end{bmatrix}+\begin{bmatrix}B&E\\B&0\end{bmatrix}\cdot \begin{bmatrix}u(t)\\d(t)\end{bmatrix}\\
+	y(t)&=\begin{bmatrix}C&0\end{bmatrix}\cdot\begin{bmatrix}x(t)\\\hat{x}(t)\end{bmatrix}\\\\
+	\dot{\tilde{x}}(t)&=\begin{bmatrix}\dot{x}(t)\\\dot{\hat{x}}(t)\end{bmatrix}=\begin{bmatrix}0&-1&0&0\\1&-2&0&0\\0&11&0&-12\\0&5&1&-7\end{bmatrix}\cdot\begin{bmatrix}x(t)\\\hat{x}(t)\end{bmatrix}+\begin{bmatrix}0&0\\0.5&1\\0&0\\0.5&0\end{bmatrix}\cdot \begin{bmatrix}u(t)\\d(t)\end{bmatrix}\\
+	y(t)&=\begin{bmatrix}0&1&0&0\end{bmatrix}\cdot\begin{bmatrix}x(t)\\\hat{x}(t)\end{bmatrix}
 \end{align*}
+\subsection*{c)}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{ohneStoergroesse.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-1.1: Sprungantwort ohne Störgröße.}
+\end{figure}
+Etwa zum Zeitpunkt $t=2s$ stimmt der geschätzte Zustand mit dem tatsächlichen Zustand überein.
+
+\subsection*{d)}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{sprungfoermigeStoergroesse.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-1.2: Sprungantwort mit sprungförmiger Störgröße.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{impulsfoermigeStoergroesse.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-1.3: Sprungantwort mit impulsförmiger Störgröße.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{normalverteilteStoergroesse.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-1.4: Sprungantwort mit normalverteilter Störgröße.}
+\end{figure}
+
+Wirkt eine sprungförmige Störgröße auf die Regelstrecke, so bleibt eine stetige Abweichung zwischen dem geschätzten Zustand der ersten Zustandsvariable und dem tatsächlichen Zustand.\\
+Wirkt eine normalverteilte oder impulsförmige Störgröße auf die Regelstrecke, so nähert sich sich der geschätzte Zustand dem tatsächlichen Zustand an.
+
 
 \end{document}
