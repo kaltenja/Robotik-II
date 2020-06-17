@@ -130,4 +130,26 @@ Wirkt eine sprungförmige Störgröße auf die Regelstrecke, so bleibt eine stet
 Wirkt eine normalverteilte oder impulsförmige Störgröße auf die Regelstrecke, so nähert sich sich der geschätzte Zustand dem tatsächlichen Zustand an.
 
 
+\section*{Aufgabe 8-2. Beobachterentwurf mit Zustandsrückführung (3 Punkte)}
+\subsection*{a)}
+Die vollständige Steuerbarkeit und vollständige Beobachtbarkeit wurde mit Matlab geprüft.
+\subsection*{b)}
+Die Eigenwerte des Beobachters wurden mit $\lambda_{B1}=-9$ und $\lambda_{B2}=-12$ festgelegt.\\
+Mithilfe von Matlab wurde das resultierende Zustandsraummodell des geschlossenen Regelkreises mit Beobachter berechnet:
+\begin{align*}
+	\dot{\tilde{x}}(t)&=\begin{bmatrix}\dot{x}(t)\\\dot{\hat{x}}(t)\end{bmatrix}=\begin{bmatrix}0&1&0&0\\-1&1&-11&-8\\22&0&-22&1\\129&0&-141&-7\end{bmatrix}\cdot\begin{bmatrix}x(t)\\\hat{x}(t)\end{bmatrix}+\begin{bmatrix}0\\12\\0\\12\end{bmatrix}\cdot u(t)\\
+	y(t)&=\begin{bmatrix}0&1&0&0\end{bmatrix}\cdot\begin{bmatrix}x(t)\\\hat{x}(t)\end{bmatrix}
+\end{align*}
+\subsection*{c)}
+Für die Simulation wurde eine sprungförmige Stellgröße genutzt. Die Anfangszustände wurden wie folgt gesetzt:
+\begin{align*}
+	x_0(t)=\begin{bmatrix}-1\\1\end{bmatrix},\hspace{10pt}\hat{x}_0(t)=\begin{bmatrix}-2\\2\end{bmatrix}
+\end{align*}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{beobachterentwurfMitZustandsrueckfuehrung.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-2.1: Sprungantwort.}
+\end{figure}
+
 \end{document}
