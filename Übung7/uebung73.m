@@ -80,5 +80,3 @@ WINKEL = lsiminfo(y(:,2), t, 0)
 % R=1 q=1000 => t_settle=3.4455
 % R=0.01 Q=diag(10^6 0.1 0.1 0.1) => t_settle=0.6829
 lsiminfo(y(:,1),t,0,'SettlingTimeThreshold', 0.02/max(abs(y(:,1))))
-
-1.0e04

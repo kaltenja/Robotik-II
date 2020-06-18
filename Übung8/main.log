@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.5)  17 JUN 2020 14:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.30)  18 JUN 2020 14:41
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 8 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2017/09/07 v3.24 KOMA-Script document class (article)
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -216,8 +216,6 @@ File: babel.def 2018/02/14 3.18 Babel common definitions
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@dirlevel=\count109
 )
-\l@british = a dialect from \language\l@english 
-\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -1663,6 +1661,12 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              This could result in several error messages on input li
 ne 74.
 
+
+Overfull \hbox (19.29967pt too wide) in paragraph at lines 75--77
+\T1/futs/m/n/10.95 Aufgrund der Struk-tur des gegebe-nen Zu-s-tand-sraum-mod-el
+ls wis-sen wir dass dieses in der Beobach-
+ []
+
 [1
 
 
@@ -1675,11 +1679,11 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              This could result in several error messages on input li
 ne 98.
 
-<Figures/ohneStoergroesse.png, id=23, 1443.89438pt x 743.02594pt>
+<Figures/ohneStoergroesse.png, id=23, 1582.91376pt x 899.36pt>
 File: Figures/ohneStoergroesse.png Graphic file (type png)
 <use Figures/ohneStoergroesse.png>
 Package pdftex.def Info: Figures/ohneStoergroesse.png  used on input line 101.
-(pdftex.def)             Requested size: 426.79135pt x 219.62158pt.
+(pdftex.def)             Requested size: 426.79135pt x 242.48737pt.
 
 Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              You've used the KOMA-Script implementation of \@ssect
@@ -1688,27 +1692,27 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              This could result in several error messages on input li
 ne 107.
 
-<Figures/sprungfoermigeStoergroesse.png, id=24, 1443.89438pt x 743.02594pt>
+<Figures/sprungfoermigeStoergroesse.png, id=24, 1578.89874pt x 902.37125pt>
 File: Figures/sprungfoermigeStoergroesse.png Graphic file (type png)
 <use Figures/sprungfoermigeStoergroesse.png>
 Package pdftex.def Info: Figures/sprungfoermigeStoergroesse.png  used on input 
 line 110.
-(pdftex.def)             Requested size: 426.79135pt x 219.62158pt.
-[2 <./Figures/ohneStoergroesse.png (PNG copy)>]
-<Figures/impulsfoermigeStoergroesse.png, id=31, 1443.89438pt x 743.02594pt>
+(pdftex.def)             Requested size: 426.79135pt x 243.91887pt.
+[2 <./Figures/ohneStoergroesse.png>]
+<Figures/impulsfoermigeStoergroesse.png, id=31, 1569.865pt x 899.36pt>
 File: Figures/impulsfoermigeStoergroesse.png Graphic file (type png)
 <use Figures/impulsfoermigeStoergroesse.png>
 Package pdftex.def Info: Figures/impulsfoermigeStoergroesse.png  used on input 
 line 117.
-(pdftex.def)             Requested size: 426.79135pt x 219.62158pt.
-<Figures/normalverteilteStoergroesse.png, id=32, 1443.89438pt x 744.53156pt>
+(pdftex.def)             Requested size: 426.79135pt x 244.50465pt.
+<Figures/normalverteilteStoergroesse.png, id=32, 1570.86874pt x 904.37875pt>
 File: Figures/normalverteilteStoergroesse.png Graphic file (type png)
 <use Figures/normalverteilteStoergroesse.png>
 Package pdftex.def Info: Figures/normalverteilteStoergroesse.png  used on input
  line 124.
-(pdftex.def)             Requested size: 426.79135pt x 220.0666pt.
- [3 <./Figures/sprungfoermigeStoergroesse.png (PNG copy)> <./Figures/impulsfoer
-migeStoergroesse.png (PNG copy)>]
+(pdftex.def)             Requested size: 426.79135pt x 245.70349pt.
+ [3 <./Figures/sprungfoermigeStoergroesse.png> <./Figures/impulsfoermigeStoergr
+oesse.png>]
 
 Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              You've used the KOMA-Script implementation of \@ssect
@@ -1747,44 +1751,126 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              This could result in several error messages on input li
 ne 143.
 
-<Figures/beobachterentwurfMitZustandsrueckfuehrung.png, id=40, 1443.89438pt x 7
-44.53156pt>
+[4 <./Figures/normalverteilteStoergroesse.png>]
+<Figures/beobachterentwurfMitZustandsrueckfuehrung.png, id=48, 1573.88pt x 886.
+31125pt>
 File: Figures/beobachterentwurfMitZustandsrueckfuehrung.png Graphic file (type 
 png)
 <use Figures/beobachterentwurfMitZustandsrueckfuehrung.png>
 Package pdftex.def Info: Figures/beobachterentwurfMitZustandsrueckfuehrung.png 
  used on input line 150.
-(pdftex.def)             Requested size: 426.79135pt x 220.0666pt.
-[4 <./Figures/normalverteilteStoergroesse.png (PNG copy)>] [5 <./Figures/beobac
-hterentwurfMitZustandsrueckfuehrung.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
+(pdftex.def)             Requested size: 426.79135pt x 240.33505pt.
+
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 155.
+
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 156.
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 157.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 159.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 8.27998pt on input line 162.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 162.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 8.27998pt on input line 162.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 162.
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--165
+
+ []
+
+[5 <./Figures/beobachterentwurfMitZustandsrueckfuehrung.png>]
+<Figures/scope_measured_feedback.png, id=61, 1394.96156pt x 709.14937pt>
+File: Figures/scope_measured_feedback.png Graphic file (type png)
+<use Figures/scope_measured_feedback.png>
+Package pdftex.def Info: Figures/scope_measured_feedback.png  used on input lin
+e 171.
+(pdftex.def)             Requested size: 426.79135pt x 216.96654pt.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 173.
+<Figures/scope_observed_feedback.png, id=62, 1394.96156pt x 709.14937pt>
+File: Figures/scope_observed_feedback.png Graphic file (type png)
+<use Figures/scope_observed_feedback.png>
+Package pdftex.def Info: Figures/scope_observed_feedback.png  used on input lin
+e 178.
+(pdftex.def)             Requested size: 426.79135pt x 216.96654pt.
+
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 183.
+
+[6 <./Figures/scope_measured_feedback.png (PNG copy)> <./Figures/scope_observed
+_feedback.png (PNG copy)>]
+<Figures/scope_observed_feedback_optimized.png, id=69, 1394.96156pt x 709.14937
+pt>
+File: Figures/scope_observed_feedback_optimized.png Graphic file (type png)
+<use Figures/scope_observed_feedback_optimized.png>
+Package pdftex.def Info: Figures/scope_observed_feedback_optimized.png  used on
+ input line 189.
+(pdftex.def)             Requested size: 426.79135pt x 216.96654pt.
+ [7 <./Figures/scope_observed_feedback_optimized.png (PNG copy)>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 155.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 155.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 195.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 155.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 195.
  ) 
 Here is how much of TeX's memory you used:
- 27003 strings out of 494871
- 538694 string characters out of 6178383
- 735748 words of memory out of 5000000
- 29818 multiletter control sequences out of 15000+600000
- 98634 words of font info for 109 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
+ 27073 strings out of 494880
+ 540382 string characters out of 6179601
+ 735623 words of memory out of 5000000
+ 29856 multiletter control sequences out of 15000+600000
+ 119553 words of font info for 133 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
  67i,20n,67p,8815b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+ </home/alex/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600p
+k>{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/fourier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ad
 obe/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/p
 utri8a.pfb>
-Output written on main.pdf (5 pages, 446272 bytes).
+Output written on main.pdf (7 pages, 680927 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
- 22 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 129 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
+ 32 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

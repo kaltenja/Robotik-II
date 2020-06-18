@@ -70,14 +70,14 @@ Die Regelstrecke ist vollständig Steuerbar.
 	S_B&=\begin{bmatrix}C\\CA \end{bmatrix}=\begin{bmatrix}0&1\\1&-2 \end{bmatrix}\\
 	\text{det}\hspace{3pt}S_B&=-1\neq0
 \end{align*}
-Die Regelstrecke ist vollsträndig beobachtbar.
+Die Regelstrecke ist vollständig beobachtbar.
 \subsection*{b)}
-Aufgrund der Strucktur des gegebenen Zustandsraummodells wissen wir dass dieses in der Beobachtungsnormalform vorliegt.\\
+Aufgrund der Struktur des gegebenen Zustandsraummodells wissen wir dass dieses in der Beobachtungsnormalform vorliegt.\\
 Die geforderten Eigenwerte des Beobachtermodells sind mit $\lambda_{B1}=-4$ und $\lambda_{B2}=-3$ gegeben. Daraus ergibt sich folgendes charakteristisches Polynom:
 \begin{align*}
 	p(\lambda_B)=\lambda^2+\underbrace{7}_{a_{B1}}\cdot\lambda+\underbrace{12}_{a_{B_0}}
 \end{align*}
-Die Koeffizienten $a_0=1$ und $a_1=2$ des charakteristischen Polynomes der Regelstrecke erhalten wird durch Ablesen aus dem gegebenen Zustandsraummodells.\\
+Die Koeffizienten $a_0=1$ und $a_1=2$ des charakteristischen Polynoms der Regelstrecke erhalten wird durch Ablesen aus dem gegebenen Zustandsraummodells.\\
 Wie folgt kann nun die Beobachterrückführung berechnet werden:
 \begin{align*}
 	l^T=\begin{bmatrix}a_{B0}&a_{B1}\end{bmatrix}-\begin{bmatrix}a_{0}&a_{1}\end{bmatrix}=\begin{bmatrix}11&5\end{bmatrix}
@@ -151,5 +151,45 @@ Für die Simulation wurde eine sprungförmige Stellgröße genutzt. Die Anfangsz
 \captionsetup{labelformat=empty}
 \caption{Abb. 8-2.1: Sprungantwort.}
 \end{figure}
+
+\section*{Aufgabe 8-3. Beobachterentwurf für das Pendel am Wagen (5 Punkte)}
+\subsection*{a)}
+\verb+[InvertedPendulumSimLuenbergerInit.m]+
+
+\subsection*{b)}
+\verb+[InvertedPendulumSimLuenberger.mdl]+\\
+
+In Abbildung 8-3.1\footnote{Die Auflösung der Abbildungen ist hoch genug, um durch den PDF-Viewer ihrer Wahl eine angemessene Vergrößerung zu erreichen.} fällt zu aller erst auf, dass das System mit Rückführung der gemessenen Zustandsvariablen stabil ist. Das Pendel konnte in der instabilen Ruhelage gehalten werden.
+Der geschätzte Zustand weicht stark vom gemessenen Zustand ab. Erst nach Drei bis Vier Sekunden stimmen diese überein und die Abweichung geht gegen Null. Am Ende der Swing-Up-Phase (Betrag des Pendelwinkels ist kleiner 1 rad) fällt auf, dass der Beobachterwert (exakt) mit der Wagenposition und der Wagengeschwindigkeit übereinstimmt. Die Pendelposition weicht nur noch ungefähr um $0.5$ rad ab.
+\\
+
+In Abbildung 8-3.2 konnte das System mit der Rückführung der beobachteten Zustandsvariablen nur durch "Zufall" stabilisiert werden. Das ist auch nicht verwunderlich, nachdem in Abbildung \mbox{8-3.1} bereits eine große Abweichung des beobachteten Zustands vom gemessenen Zustand festgestellt werden konnte. Die Beruhigungszeit beträgt mehr als 25s. Hier kann man nicht unbedingt von einem stabilen System sprechen.
+Ab ungefähr 14 Sekunden verfällt das System in ein sich immer wiederholendes Muster. Das Pendel vollführt komplette Schwingungen um seinen Aufhängepunkt. Diese Schwingungen werden mit der Zeit immer langsamer. Bei Sekunde 21 ist bei der Pendelposition in Abbildung 8-3.2 dieses Langsamerwerden deutlich zu erkennen. Als Folge ist es dann möglich durch die langsamer gewordenen Schwingung das Pendel in der instabilen Ruhelage zu halten.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{scope_measured_feedback.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-3.1: Scope der Simulation mit Rückführung der \textbf{gemessenen} Zustandsgrößen. Eigenwerte des Beobachters wurden doppelt so groß gewählt. Die gemessenen Werte sind gelb und die beobachteten Werte blau dargestellt.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{scope_observed_feedback.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-3.2: Scope der Simulation mit Rückführung der \textbf{beobachteten} Zustandsgrößen. Eigenwerte des Beobachters wurden doppelt so groß gewählt. Die gemessenen Werte sind gelb und die beobachteten Werte blau dargestellt.}
+\end{figure}
+
+\subsection*{c)}
+In Abbildung 8-3.3 ist zu erkennen, dass das System nun stabil ist. Das Pendel wird in der instabilen Ruhelage gehalten obwohl die Schätzung teils sehr ungenau ist. Diese Ungenauigkeiten treten aber immer nur sehr kurz auf, sodass das System wenig bis gar nicht darauf reagiert bzw. reagieren kann. Solche extremen Abweichung sind beispielsweise ungefähr bei Sekunde 1 zu sehen. Die Schätzung der Wagenposition hat eine Spike (mehr als doppelt so groß wie gemessen) in negativer Richtung. Dasselbe passiert bei Wagengeschwindigkeit (nicht verwunderlich, da dies die Ableitung der Position ist). Für die Pendelposition ist dies auf der Abbildung nur schwer zu erkennen, aber ebenfalls bei ungefähr Sekunde 1 hat die Pendelgeschwindigkeit einen Spike in positiver Richtung, d.h. die Pendelposition tut dies auch. Bei hinreichender Vergrößerung ist dies auch bei der Pendelposition zu erkennen.\\
+Dann ungefähr ab Sekunde 2 stimmen gemessener Zustand und geschätzter Zustand überein und das Pendel steht stabil in der instabilen Ruhelage.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{scope_observed_feedback_optimized.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-3.3: Scope der Simulation mit Rückführung der \textbf{beobachteten} Zustandsgrößen. Eigenwerte des Beobachters wurden sechsmal so groß gewählt. Die gemessenen Werte sind gelb und die beobachteten Werte blau dargestellt.}
+\end{figure}
+
 
 \end{document}
