@@ -171,8 +171,11 @@ Die  Eigenwerte des diskreten Modells sind
 \lambda_2 &= e^{-1} \approx 0.3679.
 \end{align*}
 
-Da beide Eigenwerte positiv und reell sind, ist das System instabil und erzeugt exponentielles Wachstum.
-
+Ein zeitdiskretes System ist asymptotisch stabil wenn für alle Eigenwerte der Systemmatrix $A_d$
+\begin{align*}
+\left|\lambda_i \right| < 1
+\end{align*}
+gilt. Da $\lambda_1$ größer als 1 ist, ist das System nicht asymptotisch stabil.
 
 
 \section*{Aufgabe 9-3: Zeitdiskrete Systeme (1,5 Punkte)}
@@ -186,8 +189,18 @@ Die Ausgabe von \verb+uebung93.m+:
 Das zeitdiskrete System mit einer Abtastrate von 2s hat eine Diagonalmatrix als Systemmatrix und bildet daher eine Steuerbarkeitsmatrix mit Rang 1 und ist deswegen nicht vollständig steuerbar.
 Das zeitdiskrete System mit einer Abtastrate von 3s hat keine Diagonalmatrix als Systemmatrix. Die Steuerbarkeitsmatrix hat Rang 2. Das System ist daher vollständig steuerbar.
 
-
+\pagebreak
 \section*{Aufgabe 9-4: Zeitdiskrete Systeme (2,5 Punkte)}
+\textcolor{blue}{$\bigtriangleup$}: System 1, weil oszillierend. Es klingt schneller ab als System 2 und hat daher den kleineren Realteil.\\
+
+\textcolor{cyan}{$\bigcirc$}: System 4, weil stabil. Es erreicht seinen Endwert schneller als System 3 und hat daher den Realteil, der näher an 0 ist.\\
+
+\textcolor{brown}{$\square$}: System 3, weil stabil. Es erreicht seinen Endwert später als System 4 und hat daher den Realteil, der weiter von 0 entfernt ist.\\
+
+\textcolor{green}{$\star$}: System 2, weil oszillierend. Es klingt langsamer ab als System 1 und hat daher den größeren Realteil.\\
+
+\textcolor{purple}{$\star$}: System 5, weil instabil. Die Eigenwerte liegen außerhalb des Einheitskreises.\\
+
 
 \newpage
 
