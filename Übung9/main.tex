@@ -29,17 +29,17 @@
 
 \title{	
 	\normalfont\normalsize
-	\textsc{University, School or Department Name}\\ % Your university, school and/or department name(s)
+	\textsc{Universität Würzburg}\\ % Your university, school and/or department name(s)
 	\vspace{25pt} % Whitespace
 	\rule{\linewidth}{0.5pt}\\ % Thin top horizontal rule
 	\vspace{20pt} % Whitespace
-	{\huge Assignment Title}\\ % The assignment title
+	{\huge Übung 9: Zeitdiskrete Systeme}\\ % The assignment title
 	\vspace{12pt} % Whitespace
 	\rule{\linewidth}{2pt}\\ % Thick bottom horizontal rule
 	\vspace{12pt} % Whitespace
 }
 
-\author{\LARGE Arthur Morgan} % Your name
+\author{\LARGE Alexander Björk, Janis Kaltenthaler} % Your name
 
 \date{\normalsize\today} % Today's date (\today) or a custom date
 
@@ -47,17 +47,152 @@
 
 \maketitle % Print the title
 
-%----------------------------------------------------------------------------------------
-%	FIGURE EXAMPLE
-%----------------------------------------------------------------------------------------
 
-\section*{First section}
-\subsection*{First subsection}
-\subsection*{Second subsection}
+\section*{Aufgabe 9-1: Berechnung eines diskreten Zustandsraummodells aus dem Kontinuierlichen (3 Punkte)}
+\subsection*{a)}
+Um das zeitkontinuierliche System in die diskrete Form zu überführen berechnen wir zunächst die Systemmatrix $A_d$ und den Eingabevektor $b_d$:
+
+\begin{align*}
+A_d&=e^{A\cdot T}=e^{\begin{bmatrix}-\frac{2}{3}&0\\0&-\frac{1}{3}\end{bmatrix}\cdot T}=\begin{bmatrix}e^{-2}&&0\\0&&e^{-1} \end{bmatrix}\approx\begin{bmatrix}0.135335&&0\\0&&0.367879 \end{bmatrix}\\
+b_d&=\int_{0}^{T}e^{A\cdot\alpha}d\alpha\cdot b=\int_{0}^{3}\begin{bmatrix}e^{-\frac{2\alpha}{3}}&&0\\0&&e^{-\frac{\alpha}{3}} \end{bmatrix} d\alpha\cdot \begin{bmatrix}2\\3 \end{bmatrix}=\begin{bmatrix}\frac{3-3\cdot e^{-2}}{2}&&0\\0&&3-3\cdot e^{-1} \end{bmatrix}\cdot \begin{bmatrix}2\\3 \end{bmatrix}\\
+b_d&=\begin{bmatrix}3\cdot(e^2-1)\cdot e^{-2}\\ 9\cdot(e-1)\cdot e^{-1}\end{bmatrix}\approx\begin{bmatrix}2.59399\\5.68909\end{bmatrix}
+\end{align*}
+Das zeitdiskrete Zustandsraummodell ist nun wie folgt gegeben:
+\begin{align*}
+	x(k+1)&=A_dx(k)+b_du(k),\hspace{10pt} x(0)=x_0\\
+	y(k)&=c^Tx(k)+du(k)
+\end{align*}
+\subsection*{b)}
+Die Eigenwerte von $A_d$ sind die Lösungen der charakteristischen Gleichung:
+\begin{align*}
+	\text{det}(A-\lambda I)&=0\\
+	0&=(e^{-2}-\lambda)\cdot(e^{-1}-\lambda)\\
+	\lambda_1&=e^{-2},\hspace{3pt}\lambda_2=e^{-1}
+\end{align*}
+Wegen $\lambda_1<1$ und $\lambda_2<1$ ist das zeitdiskrete System asymptotisch stabil.
+\subsection*{c)}
+Für die freie Bewegung des zeitdiskreten Systems gilt $u(k)=0$. die Bewegungsgleichung der freien Bewegung der Bewegungsgleichung des Ausgangs ist demnach:
+\begin{align*}
+	y(k)=c^TA^k_dx_0=\begin{bmatrix}1&&1\end{bmatrix}\cdot\begin{bmatrix}e^{-2}&&0\\0&&e^{-1} \end{bmatrix}^k\cdot\begin{bmatrix}1.5\\1.5\end{bmatrix}=1.5\cdot e^{-k}+1.5\cdot e^{-2\cdot k}\\
+	y(1)\approx0.754822,y(2)\approx0.230476,y(5)\approx0.010175,y(10)\approx0.000068,y(1000)\approx0.0
+\end{align*}
+Wie schon in Aufgabe \textbf{b)} gezeigt ist das System asympthotisch stabil. Für $k\rightarrow\infty$ verschwindet die Eigenbewegung.
 
 
-\section*{Second section}
-\subsection*{First subsection}
-\subsection*{Second subsection}
+\section*{Aufgabe 9-2: Berechnung eines diskreten Zustandsraummodells aus dem Kontinuierlichen (1,5 Punkte)}
+\subsection*{a)}
+Für die Überführung in das diskrete Zustandsraummodell müssen zunächst die Matrizen 
+\begin{align*}
+A_d = e^{AT}
+\end{align*}
+und 
+\begin{align*}
+b_d = \int^T_0 e^{A\alpha}d\alpha b
+\end{align*} 
+berechnet werden. \\
+
+Für $A_d$ muss die Matrixexponentialfunktion $\Phi(AT)$ gelöst werden. Da $AT$ eine allgemeine 2x2 Matrix ist, muss erst die zugehörige Jordan-Normalform $J$ mit Transformationsmatrix $V$ von $AT$ ermittelt werden. Diese sind
+\begin{align*}
+J = \begin{bmatrix}
+-1 & 0 \\
+0 & 0.5
+\end{bmatrix}
+\end{align*}
+und
+\begin{align*}
+V = \begin{bmatrix}
+-1 & 1\\
+1 & 0
+\end{bmatrix}.
+\end{align*}
+Die Matrixexponentialfunktion $\Phi(AT)$ kann nun berechnet werden durch
+\begin{align*}
+e^{AT}  &= V \cdot \text{diag}\left(e^{\lambda_1}, \dots, e^{\lambda_n}\right) \cdot V^{-1}.
+\end{align*}
+Die Eigenwerte der Diagonalmatrix befinden sich in der Jordanmatrix $J$.\\
+
+Damit ist
+\begin{align*}
+A_d = \begin{bmatrix}
+1.6487 & 1.2808 \\
+0 & 0.3679
+\end{bmatrix}.
+\end{align*}
+
+Eine Überprüfung durch Matlab mit 
+\begin{align*}
+\texttt{expm(A*T)}
+\end{align*}
+liefert die gleichen Ergebnisse.\\
+
+Nach \cite{gajic2003linear} gilt für die Matrix $b_d$ nach Matrixintegration
+\begin{align*}
+b_d = e^{AT}\left( -e^{AT}A^{-1}+A^{-1} \right) B = \left( A_d - I \right) A^{-1}B
+\end{align*}
+und ergibt somit
+\begin{align*}
+b_d = \begin{bmatrix}
+1.3140 \\
+0.6321
+\end{bmatrix}.
+\end{align*}
+Eine Überprüfung durch Matlab mit
+\begin{align*}
+\texttt{integral(@(alpha)expm(A*alpha), 0, Ts, 'ArrayValued', true) * B}
+\end{align*}
+
+liefert die gleichen Ergebnisse.\\
+
+Auch die Matlabfunktion
+\begin{align*}
+\texttt{c2d(sys,T)}
+\end{align*}
+liefert die gleichen Ergebnisse.\\
+
+Das zeitdiskrete Zustandsraummodell ist somit
+\begin{align*}
+x\left(k+1\right) &= \begin{bmatrix}
+1.6487 & 1.2808 \\
+0 & 0.3679
+\end{bmatrix} x\left(k\right) + \begin{bmatrix}
+1.3140 \\
+0.6321
+\end{bmatrix} u\left(k\right) \\
+y\left(k\right) &= \begin{bmatrix}
+1 & 1
+\end{bmatrix} x\left(k\right).
+\end{align*}
+
+
+\subsection*{b)}
+Die  Eigenwerte des diskreten Modells sind
+\begin{align*}
+\lambda_1 &= e^{\dfrac{1}{2}} \approx 1.6487 \\
+\lambda_2 &= e^{-1} \approx 0.3679.
+\end{align*}
+
+Da beide Eigenwerte positiv und reell sind, ist das System instabil und erzeugt exponentielles Wachstum.
+
+
+
+\section*{Aufgabe 9-3: Zeitdiskrete Systeme (1,5 Punkte)}
+Die Ausgabe von \verb+uebung93.m+:
+\begin{align*}
+&\texttt{Das kontinuierliche System ist vollständig steuerbar!} \\
+&\texttt{Das zeitdiskrete System mit Abtastrate 2s ist nicht vollständig steuerbar!} \\
+&\texttt{Das zeitdiskrete System mit Abtastrate 3s ist vollständig steuerbar!}
+\end{align*}
+
+Das zeitdiskrete System mit einer Abtastrate von 2s hat eine Diagonalmatrix als Systemmatrix und bildet daher eine Steuerbarkeitsmatrix mit Rang 1 und ist deswegen nicht vollständig steuerbar.
+Das zeitdiskrete System mit einer Abtastrate von 3s hat keine Diagonalmatrix als Systemmatrix. Die Steuerbarkeitsmatrix hat Rang 2. Das System ist daher vollständig steuerbar.
+
+
+\section*{Aufgabe 9-4: Zeitdiskrete Systeme (2,5 Punkte)}
+
+\newpage
+
+\bibliography{biblio}
+\bibliographystyle{apalike}
+
 
 \end{document}
