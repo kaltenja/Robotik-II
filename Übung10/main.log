@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.18)  30 JUN 2020 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.18)  30 JUN 2020 17:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1263,36 +1263,68 @@ n/10.95 Å \FML/futmi/m/it/10.95 f[]\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x;
 -tisch un-ab-h‰ngig voneinan-
  []
 
+
+Class scrartcl Warning: Incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 62.
+
+
+Class scrartcl Warning: Incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 63.
+
+
+Overfull \hbox (34.39963pt too wide) in paragraph at lines 76--78
+\T1/futs/m/n/10.95 Das gewˆhn-liche Mo-ment zweiter Ord-nung er-hal-ten wir mit
+hilfe der Var-i-anz und des Er-warungswertes
+ []
+
 [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
+
+Class scrartcl Warning: Incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 81.
+
+[2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28369 strings out of 483057
- 581133 string characters out of 5962301
- 996544 words of memory out of 5000000
- 42869 multiletter control sequences out of 15000+600000
- 611568 words of font info for 106 fonts, out of 8000000 for 9000
+ 28393 strings out of 483057
+ 581858 string characters out of 5962301
+ 999544 words of memory out of 5000000
+ 42885 multiletter control sequences out of 15000+600000
+ 621861 words of font info for 112 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 67i,19n,84p,10099b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,20n,84p,10099b,450s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/adobe/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utop
-ia/putri8a.pfb>
-Output written on main.pdf (1 page, 49519 bytes).
+mf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/fourier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ad
+obe/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/p
+utri8a.pfb>
+Output written on main.pdf (2 pages, 57563 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
+ 51 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
+ 7 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

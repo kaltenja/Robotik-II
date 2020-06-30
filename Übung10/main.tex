@@ -59,4 +59,25 @@ Die Zufallsvariablen $X$ und $Y$ sind genau dann unabhängig, falls $f_X(x)\cdot
 	f_X(x)\cdot f_Y(y)=\begin{cases}e^{-x}\cdot e^{-y}=e^{-(x+y)}, & x\ge\text{ und }y \ge0 \\0, & \text{sonst} \end{cases}=f_{XY}(x,y)
 \end{align*}
 Da $f_X(x)\cdot f_Y(y)=f_{XY}(x,y)$ gilt, sind die Zufallsvariablen $X$ und $Y$ statistisch unabhängig voneinander.
+\section*{Aufgabe 10‐4: Erwartungswerte von Zufallsprozessen (1,5 Punkte)}
+\subsection*{a)}
+Der Erwartungswert $E[Z(t)]=\mu_z$ des Zufallsprozesses $Z(t)=a\cdot X(t)+b\cdot Y$ erhält man wie folgt:
+\begin{align*}
+	E[Z(t)]=a\cdot E[X(t)]+b\cdot E[Y(t)]=2\cdot E[X(t)]+3\cdot E[Y(t)]=6
+\end{align*}
+Die Varianzen der Zufallsprozesse erhält man wie folgt:
+\begin{align*}
+	\text{Var}[X(t)]&=E[X^2(t)]-(E[X(t)])^2=6\\
+	\text{Var}[Y(t)]&=E[Y^2(t)]-(E[Y(t)])^2=-1
+\end{align*}
+Die Varianz des Zufallsprozesses $Z(t)$ erhält man wie folgt, wobei durch die Unkorreliertheit $\text{Cov}[X(t),Y(t)]=0$ gilt.
+\begin{align*}
+\text{Var}[Z(t)]=a^2\cdot\text{Var}[X(t)]+2ab\cdot\text{Cov}[X(t),Y(t)]+b^2\cdot\text{Var}[Y(t)]=15
+\end{align*}
+Das gewöhnliche Moment zweiter Ordnung erhalten wir mithilfe der Varianz und des Erwarungswertes wie folgt:
+\begin{align*}
+		E[Z^2(t)]=\text{Var}[Z(t)]+(E[Z(t)])^2=51
+\end{align*}
+\subsection*{b)}
+Da die Erwatungswerte erster und zweiter Ordnung der Zufallsprozesse $X(t)$ und $Y(t)$ invariant gegenüber zeitlicher Verschiebung sind, sind diese schwach stationär.
 \end{document} 
