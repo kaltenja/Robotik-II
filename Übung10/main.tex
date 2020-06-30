@@ -49,5 +49,14 @@
 
 
 \section*{Aufgabe 10‐1: Statistische Unabhängigkeit (2 Punkte)} 
-
-\end{document}
+Wir berechnen zuerst die Randverteilungsdichtefunktionen $f_X(x)$ und $f_Y(y)$:
+\begin{align*}
+	f_X(x)&=\int_{-\infty}^{\infty}f_{XY}(x,y)\hspace{3pt}dy=\begin{cases}\int_{0}^{\infty}e^{-(x+y)}\hspace{3pt}dy=e^{-x}, & x\ge\text{ und }y \ge0 \\0, & \text{sonst} \end{cases}\\
+	f_Y(y)&=\int_{-\infty}^{\infty}f_{XY}(x,y)\hspace{3pt}dx=\begin{cases}\int_{0}^{\infty}e^{-(x+y)}\hspace{3pt}dx=e^{-y}, & x\ge\text{ und }y \ge0 \\0, & \text{sonst} \end{cases}
+\end{align*}
+Die Zufallsvariablen $X$ und $Y$ sind genau dann unabhängig, falls $f_X(x)\cdot f_Y(y)$ eine Verbundverteilunsgdichtefunktion von $X$ und $Y$ ist:
+\begin{align*}
+	f_X(x)\cdot f_Y(y)=\begin{cases}e^{-x}\cdot e^{-y}=e^{-(x+y)}, & x\ge\text{ und }y \ge0 \\0, & \text{sonst} \end{cases}=f_{XY}(x,y)
+\end{align*}
+Da $f_X(x)\cdot f_Y(y)=f_{XY}(x,y)$ gilt, sind die Zufallsvariablen $X$ und $Y$ statistisch unabhängig voneinander.
+\end{document} 
