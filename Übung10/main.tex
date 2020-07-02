@@ -61,18 +61,18 @@ Die Zufallsvariablen $X$ und $Y$ sind genau dann unabhängig, falls $f_X(x)\cdot
 Da $f_X(x)\cdot f_Y(y)=f_{XY}(x,y)$ gilt, sind die Zufallsvariablen $X$ und $Y$ statistisch unabhängig voneinander.
 \section*{Aufgabe 10‐4: Erwartungswerte von Zufallsprozessen (1,5 Punkte)}
 \subsection*{a)}
-Der Erwartungswert $E[Z(t)]=\mu_z$ des Zufallsprozesses $Z(t)=a\cdot X(t)+b\cdot Y$ erhält man wie folgt:
+Der Erwartungswert $E[Z(t)]=\mu_z$ des Zufallsprozesses $Z(t)=a\cdot X(t)+b\cdot Y(t)$ erhält man wie folgt:
 \begin{align*}
-	E[Z(t)]=a\cdot E[X(t)]+b\cdot E[Y(t)]=2\cdot E[X(t)]+3\cdot E[Y(t)]=6
+	E[Z(t)]=a\cdot E[X(t)]+b\cdot E[Y(t)]=2\cdot E[X(t)]+3\cdot E[Y(t)]=3
 \end{align*}
 Die Varianzen der Zufallsprozesse erhält man wie folgt:
 \begin{align*}
 	\text{Var}[X(t)]&=E[X^2(t)]-(E[X(t)])^2=6\\
-	\text{Var}[Y(t)]&=E[Y^2(t)]-(E[Y(t)])^2=-1
+	\text{Var}[Y(t)]&=E[Y^2(t)]-(E[Y(t)])^2=2
 \end{align*}
 Die Varianz des Zufallsprozesses $Z(t)$ erhält man wie folgt, wobei durch die Unkorreliertheit $\text{Cov}[X(t),Y(t)]=0$ gilt.
 \begin{align*}
-\text{Var}[Z(t)]=a^2\cdot\text{Var}[X(t)]+2ab\cdot\text{Cov}[X(t),Y(t)]+b^2\cdot\text{Var}[Y(t)]=15
+\text{Var}[Z(t)]=a^2\cdot\text{Var}[X(t)]+2ab\cdot\text{Cov}[X(t),Y(t)]+b^2\cdot\text{Var}[Y(t)]=42
 \end{align*}
 Das gewöhnliche Moment zweiter Ordnung erhalten wir mithilfe der Varianz und des Erwarungswertes wie folgt:
 \begin{align*}
