@@ -59,6 +59,53 @@ Die Zufallsvariablen $X$ und $Y$ sind genau dann unabhängig, falls $f_X(x)\cdot
 	f_X(x)\cdot f_Y(y)=\begin{cases}e^{-x}\cdot e^{-y}=e^{-(x+y)}, & x\ge\text{ und }y \ge0 \\0, & \text{sonst} \end{cases}=f_{XY}(x,y)
 \end{align*}
 Da $f_X(x)\cdot f_Y(y)=f_{XY}(x,y)$ gilt, sind die Zufallsvariablen $X$ und $Y$ statistisch unabhängig voneinander.
+
+
+\section*{Aufgabe 10‐2: Zufallsprozesse (2,5Punkte)}
+\subsection*{a)}
+\begin{align*}
+\lim_{N \rightarrow \infty} \dfrac{1}{N} \sum_{i=1}^N X_i\left(t\right) = \lim_{T \rightarrow \infty} \dfrac{1}{2T} \int_{-T}^T X_j\left(t\right)dt \quad , \quad \text{für beliebige j}
+\end{align*}
+
+Dies lässt sich folgendermaßen interpretieren. Für welche Scharen ist der Erwartungswert erster Ordnung (Scharmittelwert für bestimmten Zeitpunkt) gleich dem Zeitmittelwert einer beliebiger Musterfunktion selbiger Schar.
+Dies kann zutreffen für:
+\begin{itemize}
+\item \textbf{Schar 1} könnte hier zutreffend sein, da sowohl Erwartungswert als auch Zeitmittelwert ungefähr 0 ist.
+\item Auch \textbf{Schar 2} könnte passen, da hier die selben Bedingungen für Größen erster Ordnung gelten wie bei Schar 1.
+\item Ebenso ist \textbf{Schar 4} möglich, es handelt sich nur um eine Verschiebung um $+1$. 
+\end{itemize}
+Schar 3 erfüllt diese Eigenschaft womöglich nicht, da weder über den Scharmittelwert noch über den Zeitmittelwert eine Aussage getroffen werden kann. Schar 5 hat über die Musterfunktionen einen sinusförmigen Verlauf. Der Zeitmittelwert ist jedoch 0.
+
+\subsection*{b)}
+\begin{align*}
+\lim_{N \rightarrow \infty} \dfrac{1}{N} \sum_{i=1}^N X_i^2\left(t\right) = \lim_{T \rightarrow \infty} \dfrac{1}{2T} \int_{-T}^T X_j^2\left(t\right)dt \quad , \quad \text{für beliebige j}
+\end{align*}
+Dies lässt sich durch "Erwartungswert zweiter Ordnung (quadratischer Scharmittelwert) ist gleich quadratischem Zeitmittelwert einer beliebigen Musterfunktion selbiger Schar" ausdrücken.
+
+Dies kann zutreffen für:
+\begin{itemize}
+\item \textbf{Schar 4} könnte diese Eigenschaft erfüllen, da der Zufallsprozess scheinbar Zahlen um 1 generiert und $1^2=1$ ist.
+\item Je nachdem wie die weiteren Musterfunktionen von \textbf{Schar 3} verlaufen, kann hier die Eigenschaft gelten. Durch die Quadrierung könnte hier Schar- und Zeitmittelwert gleich sein. Eine konkrete Aussage lässt sich aber bei nur 3 Musterfunktionen nicht treffen.
+\end{itemize}
+Für Schar 1 und 2 lässt sich nichts aussagen, da durch die Quadrierung und der fehlenden Beschriftung der Ordinate ein nicht-vorhersehbares Verhalten entsteht. Unter der Voraussetzung, dass Schar 5 ein sinusförmigen Verlauf hat, lässt sich diese Schar auch hier ausschließen. Für den quadratischen Scharmittelwert kann man $\sin^2(x)$ annehmen und für den quadratischen Zeitmittelwert somit $\dfrac{x - \sin x \cos x}{2}$.
+
+
+\section*{Aufgabe 10-3: Stationäre und ergodische Zufallsprozesse (2,5Punkte)}
+\subsection*{a)}
+\begin{itemize}
+\item \textbf{Schar 1} ist schwach stationär. Erwartungswerte erster und zweiter Ordnung sind konstant und daher unabhängig von der Zeit.
+\item Selbiges gilt für \textbf{Schar 2, 3 und 4}. 
+\end{itemize}
+Schar 5 hat offensichtlich keinen zeitunabhängigen Erwartungswert erster Ordnung und ist somit nicht schwach stationär.
+
+\subsection*{b)}
+\begin{itemize}
+\item \textbf{Schar 1 und 2} sind ergodisch. Sie sind schwach stationär und sowohl die Zeitmittelwerte als auch die Scharmittelwerte stimmen überein (ungefähr 0).
+\item \textbf{Schar 4} ist ebenfalls ergodisch. Es gilt die gleiche Begründung wie für Schar 1 und 2, nur dass hier die Mittelwerte ungefähr 1 sind.
+\end{itemize}
+Schar 3 ist nicht ergodisch, weil die Zeitmittelwerte über die Musterfunktionen nicht gleich sind. Schar 5 ist auch nicht ergodisch, weil sie nicht (schwach) stationär ist.
+
+
 \section*{Aufgabe 10‐4: Erwartungswerte von Zufallsprozessen (1,5 Punkte)}
 \subsection*{a)}
 Der Erwartungswert $E[Z(t)]=\mu_z$ des Zufallsprozesses $Z(t)=a\cdot X(t)+b\cdot Y(t)$ erhält man wie folgt:

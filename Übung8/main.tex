@@ -191,5 +191,39 @@ Dann ungefähr ab Sekunde 2 stimmen gemessener Zustand und geschätzter Zustand 
 \caption{Abb. 8-3.3: Scope der Simulation mit Rückführung der \textbf{beobachteten} Zustandsgrößen. Eigenwerte des Beobachters wurden sechsmal so groß gewählt. Die gemessenen Werte sind gelb und die beobachteten Werte blau dargestellt.}
 \end{figure}
 
+\subsection*{d)}
+
+Die Simulation mit Rückführung der gemessenen Zustandsgrößen und hinzugefügten Störungen konnte mit Tiefpassfilter stabilisiert werden (Abbildung 8-3.4).\\
+Die gemessenen und beobachteten Zustandsgrößen stimmen für die Wagenposition ungefähr ab Sekunde 2 überein. Davor gab es wie schon wie den Simulation zuvor (Abbildung 8-3.1 bis 8-3.3) kurze aber dafür sehr starke Abweichungen. Die beobachtete Pendelposition stimmt zu Anfang teilweise mit der gemessenen überein. Die Beobachtungswerte unterliegen hier großen Schwankungen.\\
+
+Ohne Tiefpassfilter (Abbildung 8-3.5) gelang keine Stabilisierung.\\
+
+In Abbildung 8.3-6 und 8.3-7 sind die Scopes der Simulation mit Rückführung der beobachteten Zustandsgrößen. Es gelang eine Stabilisierung in der instabilen Ruhephase. Es ist eindeutig zu erkennen, dass die abgeleiteten beobachteten Zustandsgrößen (Wagen- und Pendelgeschwindigkeit) nicht so stark von den Störungen beeinflusst werden wie die gemessenen. Bei den (direkt) beobachteten Zustandsgrößen (Wagen- und Pendelposition) ist dies schon deutlicher der Fall. Der Beobachter berücksichtigt die Störungen und kann diese rückführen, so dass das System stabil gehalten werden kann.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{n1_scope_measured_noise_low_pass.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-3.4: Scope der Simulation mit Rückführung der \textbf{gemessenen} Zustandsgrößen. Eigenwerte des Beobachters wurden auf $\left[-45, -24, -21, -18\right]$ gewählt. Die gemessenen Werte sind gelb und die beobachteten Werte blau dargestellt. Der Simulation wurden Störungen hinzugefügt und es wurde ein Tiefpassfilter verwendet.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{n2_scope_measured_noise.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-3.5: Scope der Simulation mit Rückführung der \textbf{gemessenen} Zustandsgrößen. Eigenwerte des Beobachters wurden auf $\left[-45, -24, -21, -18\right]$ gewählt. Die gemessenen Werte sind gelb und die beobachteten Werte blau dargestellt. Der Simulation wurden Störungen hinzugefügt und es wurde \textbf{kein} Tiefpassfilter verwendet.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{n3_scope_observed_noise.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-3.6: Scope der Simulation mit Rückführung der \textbf{beobachteten} Zustandsgrößen. Eigenwerte des Beobachters wurden auf $\left[-45, -24, -21, -18\right]$ gewählt. Die gemessenen Werte sind gelb und die beobachteten Werte blau dargestellt. Der Simulation wurden Störungen hinzugefügt und es wurde \textbf{kein} Tiefpassfilter verwendet.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{n3_scope_observed_noise_zoom.png}
+\captionsetup{labelformat=empty}
+\caption{Abb. 8-3.7: Starke Vergrößerung der instabilen Ruhephase von Abbildung 8-3.6.}
+\end{figure}
 
 \end{document}

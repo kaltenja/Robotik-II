@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.30)  18 JUN 2020 14:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.30)  21 JUN 2020 16:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1841,21 +1841,80 @@ File: Figures/scope_observed_feedback_optimized.png Graphic file (type png)
 Package pdftex.def Info: Figures/scope_observed_feedback_optimized.png  used on
  input line 189.
 (pdftex.def)             Requested size: 426.79135pt x 216.96654pt.
- [7 <./Figures/scope_observed_feedback_optimized.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
+
+
+Class scrartcl Warning: incompatible usage of \@ssect detected.
+(scrartcl)              You've used the KOMA-Script implementation of \@ssect
+(scrartcl)              from within a non compatible caller, that does not
+(scrartcl)              \scr@s@ct@@nn@m@ locally.
+(scrartcl)              This could result in several error messages on input li
+ne 194.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+
+Overfull \hbox (0.95853pt too wide) in paragraph at lines 201--202
+[]\T1/futs/m/n/10.95 In Ab-bil-dung 8.3-6 und 8.3-7 sind die Scopes der Sim-u-l
+a-tion mit Rück-führung der beobachteten
+ []
+
+
+Overfull \hbox (26.57047pt too wide) in paragraph at lines 201--202
+\T1/futs/m/n/10.95 erken-nen, dass die abgeleit-eten beobachteten Zu-s-tands-gr
+öÿen (Wagen- und Pen-delgeschwindigkeit)
+ []
+
+[7 <./Figures/scope_observed_feedback_optimized.png (PNG copy)>]
+<Figures/n1_scope_measured_noise_low_pass.png, id=78, 1394.96156pt x 709.14937p
+t>
+File: Figures/n1_scope_measured_noise_low_pass.png Graphic file (type png)
+<use Figures/n1_scope_measured_noise_low_pass.png>
+Package pdftex.def Info: Figures/n1_scope_measured_noise_low_pass.png  used on 
+input line 206.
+(pdftex.def)             Requested size: 426.79135pt x 216.96654pt.
+<Figures/n2_scope_measured_noise.png, id=79, 1394.96156pt x 709.14937pt>
+File: Figures/n2_scope_measured_noise.png Graphic file (type png)
+<use Figures/n2_scope_measured_noise.png>
+Package pdftex.def Info: Figures/n2_scope_measured_noise.png  used on input lin
+e 212.
+(pdftex.def)             Requested size: 426.79135pt x 216.96654pt.
+<Figures/n3_scope_observed_noise.png, id=80, 1394.96156pt x 709.14937pt>
+File: Figures/n3_scope_observed_noise.png Graphic file (type png)
+<use Figures/n3_scope_observed_noise.png>
+Package pdftex.def Info: Figures/n3_scope_observed_noise.png  used on input lin
+e 218.
+(pdftex.def)             Requested size: 426.79135pt x 216.96654pt.
+<Figures/n3_scope_observed_noise_zoom.png, id=81, 1858.945pt x 944.52875pt>
+File: Figures/n3_scope_observed_noise_zoom.png Graphic file (type png)
+<use Figures/n3_scope_observed_noise_zoom.png>
+Package pdftex.def Info: Figures/n3_scope_observed_noise_zoom.png  used on inpu
+t line 224.
+(pdftex.def)             Requested size: 426.79135pt x 216.8479pt.
+ [8 <./Figures/n1_scope_measured_noise_low_pass.png (PNG copy)> <./Figures/n2_s
+cope_measured_noise.png (PNG copy)>] [9 <./Figures/n3_scope_observed_noise.png 
+(PNG copy)> <./Figures/n3_scope_observed_noise_zoom.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 229.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 229.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 195.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 229.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 229.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 195.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 229.
  ) 
 Here is how much of TeX's memory you used:
- 27073 strings out of 494880
- 540382 string characters out of 6179601
+ 27100 strings out of 494880
+ 541287 string characters out of 6179601
  735623 words of memory out of 5000000
- 29856 multiletter control sequences out of 15000+600000
+ 29872 multiletter control sequences out of 15000+600000
  119553 words of font info for 133 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  67i,20n,67p,8815b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1867,10 +1926,10 @@ ist/fonts/type1/public/fourier/fourier-ms.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/adobe/utopia/putb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ad
 obe/utopia/putr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/utopia/p
 utri8a.pfb>
-Output written on main.pdf (7 pages, 680927 bytes).
+Output written on main.pdf (9 pages, 1341675 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
- 32 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
